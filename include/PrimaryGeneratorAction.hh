@@ -8,6 +8,7 @@
 #include "G4SystemOfUnits.hh"
 #include "G4ParticleGun.hh"
 #include "TFile.h"
+#include "TChain.h"
 
 
 
@@ -42,6 +43,7 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 
         TFile *f;
         TTree *t;
+        TChain *ch;
         float x,y,z,theta,phi,E,dx,dy,dz;
         string volume;
         

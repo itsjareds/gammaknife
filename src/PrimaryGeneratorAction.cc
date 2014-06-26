@@ -7,6 +7,7 @@
 #include "SteppingAction.hh"
 #include "TFile.h"
 #include "TTree.h"
+#include "TChain.h"
 #include "PrimaryGeneratorAction.hh"
 #include <stdlib.h>
 #include <stdio.h>

@@ -29,8 +29,8 @@ file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 
 set(ROOT_LIBRARIES -L/usr/lib/root -lCore -lCint -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lMatrix -lPhysics -lMathCore -lThread -pthread -lm -ldl -rdynamic)
-SET(GCC_COVERAGE_COMPILE_FLAGS "-w -DPHASESPACE")
-#SET(GCC_COVERAGE_COMPILE_FLAGS "-w")
+#SET(GCC_COVERAGE_COMPILE_FLAGS "-w -DPHASESPACE")
+SET(GCC_COVERAGE_COMPILE_FLAGS "-w")
 SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}" )
 #----------------------------------------------------------------------------
 # Locate sources and headers for this project
