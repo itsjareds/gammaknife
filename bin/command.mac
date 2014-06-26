@@ -16,4 +16,4 @@
 
 
 # Lancement des particules primaires
-/run/beamOn 1000000
+/run/beamOn 10000

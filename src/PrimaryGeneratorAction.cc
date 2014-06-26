@@ -31,7 +31,7 @@ G4ThreeVector PrimaryGeneratorAction::GetEmissionPosition() {
   v[0] = cos(angle) * rad;
   v[1] = sin(angle) * rad; 
   v[2] = G4UniformRand()*length - length/2.0;
-  v[2] -= 89.3869*mm ;
+  v[2] -= 89.3869*mm;
 
   return v;//G4ThreeVector(0.3*mm,0,2*mm);
 }
@@ -151,6 +151,8 @@ particleGun->SetParticleCharge(ionCharge);
   particleGun->SetParticleMomentumDirection(GetEmissionDirection());
 
 #else
+
+  ch = new TChain("PhaseSpace");
 
   ch->LoadTree(nPhotonsGenerated);
   ch->GetEntry( nPhotonsGenerated );
