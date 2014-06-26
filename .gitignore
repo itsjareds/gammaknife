@@ -1,0 +1,13 @@
+build/
+*~
+*.swp
+*.swo
+
+CMakeCache.txt
+CMakeFiles/
+G4History.macro
+Makefile
+cmake_install.cmake
+currentEvent.rndm
+currentRun.rndm
+fixedbeam30.py
