@@ -1,0 +1,67 @@
+Collimators and Resources
+from RGIwiki
+
+Collimators and arrangement of the two sources hemisphere: Image: Source collimator Assembly.pdf
+
+The total radiation shielding system: Image: Full Shielding System.pdf
+
+
+Sources drawings:
+
+Sources pot of internal storage: Image: Source Inner Container.pdf
+
+Sources inside a pot filled container: Image: Source Inner Container Loaded.pdf
+
+Sources central pot of: Image: Source Middle Container.pdf
+
+With middle and inner jar is closed: Image: Source InnerAndMiddle Container.pdf
+
+Sources outer crucible: Image: Source Outer Container.pdf
+
+Closed with three jars: Image: Source AllThreeContainers.pdf
+The outer jar full length: 50.2 mm
+5.3 mm of the resources themselves to begin after the end of the primary collimator and approx. 26.5 mm long.
+With a diameter of 2.6 mm.
+Behind the end of the primary collimator is a 1.84 mm steel 0:46 mm window, which begins behind the internal
+jar.
+
+
+Hemisphere drawings:
+
+Hemisphere containing the primary collimators: Image: SourceAndPrimaryCollimatorHemisphere.pdf
+Outside diameter: 414.0 mm
+Internal Diameter: 260.5 mm
+
+Hemisphere containing the secondary collimators: Image: SecondaryCollimatorHemisphere.pdf
+
+Secondary collimator holes: Image: SecondaryCollimatorHoles.pdf
+Outside diameter: 260.0 mm
+Internal Diameter: 170.0 mm
+
+Plexiglas bubble: Image: Patient HeadBubble.pdf
+Outside diameter: 166.0 mm Bore: 163.0 mm
+
+
+Collimators drawings:
+
+Primary source holder and collimator cylinder: Image: PrimaryCollimatorSleeve.pdf
+Screws are held inside the two primary collimator and a bullet in the spring sources.
+
+Primary collimators: Image: Primary Collimator.pdf
+Length: 51.0 mm (of which there are two in a row)
+Outer diameter: 25.0 mm
+Inner hole diameter: 6.5 mm
+Material: tungsten
+
+Secondary 4 mm collimator: Image: SecondaryCollimator 4.pdf
+Length: 89.0 mm
+Diameter: 20 mm (24 mm in diameter has a shoulder on the top)
+Inner hole diameter: 6.2 mm
+Material: tungsten
+
+Secondary collimator 8 mm, 14 mm, 18 mm: Image: SecondaryCollimator 8 14 18.pdf
+Length: 89.0 mm
+Diameter: 20 mm (24 mm in diameter has a shoulder on the top)
+Upper inner hole diameter: 5.3 mm, 5.0 mm, 6mm
+Inner hole opening angle: 12:47 degrees, 0.94 degrees, 1.25 degrees
+Material: tungsten
