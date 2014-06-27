@@ -36,14 +36,14 @@ class SteppingAction : public G4UserSteppingAction
 //         TH2F *h2d, *h2d2;
 //         TH1F *h1d, *h1d2;
 
-        string filenamebin,filenamesquaredbin ;
-        G4int nb_binsX,nb_binsY ;
-        float size_bins ; //mm
+        string filenamebin,filenamesquaredbin;
+        G4int nb_binsX,nb_binsY;
+        float size_bins; //mm
         bool energydeposit; // 0 pour GetTotalEnergyDeposit, 1 pour Pre - post step
         bool electron;
         FILE *pf;
         float *edep, *edepsquared;
-        G4int nhits ;
+        G4int nhits;
         unsigned int nEntries;
     };
 

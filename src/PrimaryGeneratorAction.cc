@@ -27,10 +27,10 @@ G4ThreeVector PrimaryGeneratorAction::GetEmissionPosition() {
   G4ThreeVector v;
   G4double radius = 2.5908*mm;
   G4double length = 30.2588*mm;
-  G4double   rad = G4UniformRand() * radius;   
-  G4double angle = G4UniformRand() * 6.28318f;     
+  G4double   rad = G4UniformRand() * radius;
+  G4double angle = G4UniformRand() * 6.28318f;
   v[0] = cos(angle) * rad;
-  v[1] = sin(angle) * rad; 
+  v[1] = sin(angle) * rad;
   v[2] = G4UniformRand()*length - length/2.0;
   v[2] -= 89.3869*mm;
 
@@ -48,11 +48,13 @@ PrimaryGeneratorAction* PrimaryGeneratorAction::theGenerator = NULL;
 PrimaryGeneratorAction::~PrimaryGeneratorAction(){
   G4cout << "PrimaryGeneratorAction::Delete"<<G4endl;
   G4cout << "nPhotonsGenerated "<<nPhotonsGenerated<<G4endl;
+
+#ifdef PHASESPACE
   TString filename = Form("PhaseSpace.%d.root",thread);
   f = new TFile(filename,"recreate");
   t->Write();
   f->Close();
-
+#endif
 
   delete particleGun;
   theGenerator = NULL;
@@ -71,22 +73,21 @@ PrimaryGeneratorAction::PrimaryGeneratorAction(G4int _thread) {
   positron = particleTable->FindParticle("e+");
   electron = particleTable->FindParticle("e-");
 
-
-
 #ifdef PHASESPACE
-  
+
   particleGun = new G4ParticleGun(1);
   // particleGun->SetParticleEnergy(GetEmissionEnergy());
   // particleGun->SetParticlePosition(GetEmissionPosition());
   // particleGun->SetParticleMomentumDirection(GetEmissionDirection());
-  
+
   particleGun->SetParticleEnergy(0*eV);
   particleGun->SetParticlePosition(G4ThreeVector(0.,0.,0.));
   particleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
 
-
 //   particleGun->SetParticleDefinition(G4Gamma::Gamma());
-G4cout<<"Creation PhaseSpace ..."<<G4endl;
+
+  G4cout<<"Creation PhaseSpace ..."<<G4endl;
+
   t = new TTree("PhaseSpace","PhaseSpace");
   t->Branch("Ekine",&E,"Ekine/F");
   t->Branch("X",&x,"X/F");
@@ -117,15 +118,14 @@ G4cout<<"Creation PhaseSpace ..."<<G4endl;
   ch->SetBranchAddress("dX",&dx);
   ch->SetBranchAddress("dY",&dy);
   ch->SetBranchAddress("dZ",&dz);
-  
-  
+
   G4cout<<"Read PhaseSpace ..."<<G4endl;
+
   particleGun = new G4ParticleGun();
   particleGun->SetParticleDefinition(G4Gamma::Gamma());
 
+  G4cout<<"PhaseSpace read"<<G4endl;
 
-  
-    G4cout<<"PhaseSpace read"<<G4endl;
 #endif
 }
 
@@ -146,17 +146,13 @@ particleGun->SetParticleCharge(ionCharge);
 */
   particleGun->SetParticleEnergy( GetEmissionEnergy() );
   particleGun->SetParticleDefinition(gamma);
-
-
   particleGun->SetParticlePosition( GetEmissionPosition());
   particleGun->SetParticleMomentumDirection(GetEmissionDirection());
 
 #else
 
-  ch = new TChain("PhaseSpace");
-
   ch->LoadTree(nPhotonsGenerated);
-  ch->GetEntry( nPhotonsGenerated );
+  ch->GetEntry(nPhotonsGenerated);
   ParticlePosition = G4ThreeVector(x,y,z);
   ParticleMomentum = G4ThreeVector(dx,dy,dz); //.setRThetaPhi(1.,theta,phi);
   particleGun->SetParticlePosition( ParticlePosition );
@@ -165,7 +161,8 @@ particleGun->SetParticleCharge(ionCharge);
 
 #endif
 
-  if(nPhotonsGenerated % 100000 == 0) G4cout<<"Particle .... "<<nPhotonsGenerated<<G4endl;
+  if (nPhotonsGenerated % 100000 == 0)
+    G4cout<<"Particle .... "<<nPhotonsGenerated<<G4endl;
   particleGun->GeneratePrimaryVertex( anEvent );
   IrradiatedEnergy += E;
   nPhotonsGenerated++;

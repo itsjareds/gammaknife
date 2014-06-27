@@ -23,11 +23,15 @@ SteppingAction::SteppingAction(G4int thread, G4int nb) {
 }
 
 void SteppingAction::UserSteppingAction(const G4Step* aStep) {
+  // G4Track *tr = aStep->GetTrack();
+  // G4String VolumeName = tr->GetVolume()->GetName();
+  // G4String proc = aStep->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName();
+
+#ifdef PHASESPACE
   G4Track *tr = aStep->GetTrack();
   G4String VolumeName = tr->GetVolume()->GetName();
-  G4String proc = aStep->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName(); 
-#ifdef PHASESPACE
-  if ( VolumeName=="plexiPhys"  ) {
+  G4String proc = aStep->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName();
+  if (VolumeName=="plexiPhys"  ) {
     if ( tr->GetNextVolume()->GetName()=="containerPhys" ) {
       if ( tr->GetParticleDefinition()->GetParticleName()!="gamma" ) {
         tr->SetTrackStatus(fStopAndKill);
@@ -35,7 +39,7 @@ void SteppingAction::UserSteppingAction(const G4Step* aStep) {
       } else {
         G4StepPoint* postStepPoint = aStep->GetPostStepPoint();
         gen->E = postStepPoint->GetTotalEnergy();
-        if ( gen->E>0 ) {
+        if (gen->E > 0) {
           G4ThreeVector pos = postStepPoint->GetPosition();
           gen->x = pos[0];
           gen->y = pos[1];
@@ -44,10 +48,10 @@ void SteppingAction::UserSteppingAction(const G4Step* aStep) {
           //gen->theta = mom.getTheta();
           //gen->phi = mom.getPhi();
           gen->t->Fill();
-		  gen->dx= mom[0] / gen->E;
-		  gen->dy= mom[1] / gen->E;
-		  gen->dz= mom[2] / gen->E;
-          
+          gen->dx= mom[0] / gen->E;
+          gen->dy= mom[1] / gen->E;
+          gen->dz= mom[2] / gen->E;
+
         }
         tr->SetTrackStatus(fStopAndKill);
       }
@@ -61,8 +65,4 @@ void SteppingAction::UserSteppingAction(const G4Step* aStep) {
 #endif
 
   return;
-
-
-
-
 }

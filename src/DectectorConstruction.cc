@@ -170,11 +170,11 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   mat_Be->AddElement(el_Ni,1);
 
   G4Material* mat_nitrure = new G4Material(name="mat_Nitrure",density=4.91*g/cm3,nel=2);
-  mat_nitrure->AddElement(el_N,1);   
+  mat_nitrure->AddElement(el_N,1);
   mat_nitrure->AddElement(el_Cr,1);
 
   G4Material* mat_iron = new G4Material("mat_iron", density=7.874*g/cm3, nel=1);
-  mat_iron->AddElement(el_Fe, 1);    
+  mat_iron->AddElement(el_Fe, 1);
 
   G4Material* mat_tungsten = new G4Material("Tungsten", density=19.25*g/cm3, nel=1);
   mat_tungsten->AddElement(el_W, 1);
@@ -185,8 +185,10 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   mat_plexiglas->AddElement(el_C, 0.5999);
   mat_plexiglas->AddElement(el_O, 0.3196);
 
+#ifdef PHASESPACE
+
   //################################################################
-  // Define the seed geometry
+  // Define the collimator geometry
   //################################################################
 
 
@@ -247,7 +249,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4PVPlacement* middleTubePhys = new G4PVPlacement(zero_rotation, G4ThreeVector(middleTubePosX,middleTubePosY,middleTubePosZ), middleTubeLogic, "middleTubePhys", container, false, 0);
   //middleTubeLogic.SetForceWireFrame(1)
 
-  //#sourceAssembly.AddPlacedVolume( middleTubeLogic, pos=(middleTubePosX,middleTubePosY,middleTubePosZ) )  
+  //#sourceAssembly.AddPlacedVolume( middleTubeLogic, pos=(middleTubePosX,middleTubePosY,middleTubePosZ) )
 
 
   //####smallest tube
@@ -269,7 +271,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4PVPlacement* smallestTubePhys = new G4PVPlacement(zero_rotation, G4ThreeVector(smallestTubePosX,smallestTubePosY, smallestTubePosZ), smallestTubeLogic, "smallestTubePhys", container, false, 0);
 
 
-  //####cap of the largest tube  
+  //####cap of the largest tube
 
   G4double largestCapInnerDiam=8;
   //#largestCapOuterDiam=27.6351
@@ -286,13 +288,13 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   largestCapLogic->SetVisAttributes(largestCapLogic_att);
 
   G4PVPlacement* largestCapPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(largestCapPosX,largestCapPosY,largestCapPosZ), largestCapLogic, "largestCapPhys", container, false, 0);
-  //largestCapLogic.SetForceWireFrame(1)  
+  //largestCapLogic.SetForceWireFrame(1)
 
-  //#sourceAssembly.AddPlacedVolume( largestCapLogic, pos=(largestCapPosX,largestCapPosY,largestCapPosZ) )  
+  //#sourceAssembly.AddPlacedVolume( largestCapLogic, pos=(largestCapPosX,largestCapPosY,largestCapPosZ) )
 
 
 
-  //####cap of the middle tube 
+  //####cap of the middle tube
 
   G4double middleCapInnerDiam=0;
   //#middleCapOuterDiam=11.6078;
@@ -310,12 +312,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   //uncomment later
   middleCapLogic->SetVisAttributes(middleCapLogic_att);
   G4PVPlacement* middleCapPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(middleCapPosX,middleCapPosY,middleCapPosZ), middleCapLogic, "middleCapPhys", container, false, 0);
-  //middleCapLogic.SetForceWireFrame(1) 
+  //middleCapLogic.SetForceWireFrame(1)
 
-  //#sourceAssembly.AddPlacedVolume( middleCapLogic, pos=(middleCapPosX,middleCapPosY,middleCapPosZ) ) 
+  //#sourceAssembly.AddPlacedVolume( middleCapLogic, pos=(middleCapPosX,middleCapPosY,middleCapPosZ) )
 
 
-  //####cap of the smallest tube 
+  //####cap of the smallest tube
 
   G4double smallestCapInnerDiam=0;
   G4double smallestCapOuterDiam=2.5908;
@@ -338,13 +340,13 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
       //, /*color=*/cerebral_fluid);
   //uncomment later
   G4PVPlacement* smallestCapPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(smallestCapPosX,smallestCapPosY,smallestCapPosZ), smallestCapLogic, "smallestCapPhys", container, false, 0);
-  //smallestCapLogic.SetForceSolid(1) 
+  //smallestCapLogic.SetForceSolid(1)
 
-  //#sourceAssembly.AddPlacedVolume( smallestCapLogic, pos=(smallestCapPosX,smallestCapPosY,smallestCapPosZ) ) 
+  //#sourceAssembly.AddPlacedVolume( smallestCapLogic, pos=(smallestCapPosX,smallestCapPosY,smallestCapPosZ) )
 
 
 
-  //####backcap of the largest tube 
+  //####backcap of the largest tube
 
   G4double largestBackCapInnerDiam=0;
   //#largestBackCapOuterDiam=27.6352;
@@ -362,12 +364,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   //uncomment later
   largestBackCapLogic->SetVisAttributes(largestBackCapLogic_att);
   G4PVPlacement* largestBackCapPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(largestBackCapPosX,largestBackCapPosY,largestBackCapPosZ), largestBackCapLogic, "largestBackCapPhys", container, false, 0);
-  //largestBackCapLogic.SetForceWireFrame(1)  
+  //largestBackCapLogic.SetForceWireFrame(1)
 
-  //#sourceAssembly.AddPlacedVolume( largestBackCapLogic, pos=(largestBackCapPosX,largestBackCapPosY,largestBackCapPosZ) )  
+  //#sourceAssembly.AddPlacedVolume( largestBackCapLogic, pos=(largestBackCapPosX,largestBackCapPosY,largestBackCapPosZ) )
 
 
-  //####backcap of the middle tube 
+  //####backcap of the middle tube
 
   G4double middleBackCapInnerDiam=0;
   //#middleBackCapOuterDiam=11.6078
@@ -387,7 +389,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4PVPlacement* middleBackCapPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(middleBackCapPosX,middleBackCapPosY,middleBackCapPosZ), middleBackCapLogic, "middleBackCapPhys", container, false, 0);
 
 
-  //####backcap of the smallest tube 
+  //####backcap of the smallest tube
 
   G4double smallestBackCapInnerDiam=0;
   //#smallestBackCapOuterDiam=6.64
@@ -424,9 +426,9 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   //uncomment later
   cobaltLogic->SetVisAttributes(cobaltLogic_att);
   G4PVPlacement* cobaltPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(cobaltPosX,cobaltPosY,cobaltPosZ), cobaltLogic, "cobaltPhys", container, false, 0);
-  //cobaltLogic.SetForceWireFrame(1)  
+  //cobaltLogic.SetForceWireFrame(1)
 
-  //#sourceAssembly.AddPlacedVolume( cobaltLogic, pos=(cobaltPosX,cobaltPosY,cobaltPosZ) )  
+  //#sourceAssembly.AddPlacedVolume( cobaltLogic, pos=(cobaltPosX,cobaltPosY,cobaltPosZ) )
 
 
 
@@ -447,9 +449,9 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   //uncomment later
   tungstenPlugLogic->SetVisAttributes(tungstenPlugLogic_att);
   G4PVPlacement* tungstenPlugPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(tungstenPlugPosX,tungstenPlugPosY,tungstenPlugPosZ), tungstenPlugLogic, "tungstenPlugPhys", container, false, 0);
-  //tungstenPlugLogic.SetForceWireFrame(1)  
+  //tungstenPlugLogic.SetForceWireFrame(1)
 
-  //#sourceAssembly.AddPlacedVolume( tungstenPlugLogic, pos=(tungstenPlugPosX,tungstenPlugPosY,tungstenPlugPosZ) )  
+  //#sourceAssembly.AddPlacedVolume( tungstenPlugLogic, pos=(tungstenPlugPosX,tungstenPlugPosY,tungstenPlugPosZ) )
 
 
   //####primary coll
@@ -468,9 +470,9 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
       //, /*color=*/skin);
   primaryCollLogic->SetVisAttributes(primaryCollLogic_att);
   G4PVPlacement* primaryCollPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(primaryCollPosX,primaryCollPosY,primaryCollPosZ), primaryCollLogic, "primaryCollPhys", container, false, 0);
-  //primaryCollLogic.SetForceWireFrame(1) 
+  //primaryCollLogic.SetForceWireFrame(1)
 
-  //#sourceAssembly.AddPlacedVolume( prmaryCollLogic, pos=(primaryCollPosX,primaryCollPosY,primaryCollPosZ) )  
+  //#sourceAssembly.AddPlacedVolume( prmaryCollLogic, pos=(primaryCollPosX,primaryCollPosY,primaryCollPosZ) )
 
 
 
@@ -488,9 +490,9 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
       //, /*color=*/skin);
   primaryColl2Logic->SetVisAttributes(primaryColl2Logic_att);
   G4PVPlacement* primaryColl2Phys = new G4PVPlacement(zero_rotation, G4ThreeVector(primaryColl2PosX,primaryColl2PosY,primaryColl2PosZ), primaryColl2Logic, "primaryColl2Phys", container, false, 0);
-  //primaryColl2Logic.SetForceWireFrame(1)  
+  //primaryColl2Logic.SetForceWireFrame(1)
 
-  //#sourceAssembly.AddPlacedVolume( primaryColl2Logic, pos=(primaryColl2PosX,primaryColl2PosY,primaryColl2PosZ) )  
+  //#sourceAssembly.AddPlacedVolume( primaryColl2Logic, pos=(primaryColl2PosX,primaryColl2PosY,primaryColl2PosZ) )
 
 
   //####14mm coll
@@ -525,7 +527,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 
 
-  //####Source shielding  
+  //####Source shielding
 
   G4double sourceShieldingInnerDiam=27.6352;
   G4double sourceShieldingOuterDiam=107.6352;
@@ -544,7 +546,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   //sourceShieldingLogic->SetForceWireFrame(true);
   //#sourceShieldingLogic->SetForceSolid(true);
 
-  //####Collimator shielding  
+  //####Collimator shielding
 
   G4double collimatorShieldingInnerDiam=20;
   G4double collimatorShieldingOuterDiam=107.6352;
@@ -570,7 +572,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4double plexiHeight = 2.0;
   G4double plexiPosX=0.0;
   G4double plexiPosY=0.0;
-  G4double plexiPosZ=containerHeight/2.-plexiHeight/2.0; // WARNING TO BE CORRECTED 
+  G4double plexiPosZ=containerHeight/2.-plexiHeight/2.0; // WARNING TO BE CORRECTED
 
   G4Tubs* plexiSolid = new G4Tubs("plexiSolid", plexiInnerDiam/2, plexiOuterDiam/2, plexiHeight/2, 0.0, 2.0*pi);
   G4VisAttributes* plexiLogic_att = new G4VisAttributes(white);
@@ -583,6 +585,48 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 //   G4GDMLParser parser;
 //   parser.Write("g4test.gdml", World_phys);
+
+#else
+
+  //################################################################
+  // Define the flask geometry
+  //################################################################
+
+  //####container
+  G4double containerOuterDiam= 107.6352*mm;
+  G4double containerHeight = 50.0126*mm + 51.5*2*mm + 89*mm + 1.5*mm;
+  G4double containerPosX=0.0*mm;
+  G4double containerPosY=0.0*mm;
+  G4double containerPosZ=0.0*mm;
+
+  G4Tubs* containerSolid = new G4Tubs("containerSolid", 0, containerOuterDiam/2., containerHeight/2., 0.0, 2.0*pi);
+  //uncomment later
+
+  G4VisAttributes* container_att = new G4VisAttributes(yellow);
+  G4LogicalVolume* container = new G4LogicalVolume(containerSolid, Air, "container",0,0,0);
+
+  container->SetVisAttributes(container_att);
+  G4RotationMatrix* zero_rotation = new G4RotationMatrix();
+  //uncomment later
+  G4PVPlacement* containerPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(containerPosX,containerPosY,containerPosZ), container, "containerPhys", World_log, false, 0);
+
+  //####test rectangle
+
+  G4double largestBackCapInnerDiam=0;
+  G4double largestBackCapOuterDiam=5.;
+  G4double largestBackCapHeight=2.2606;
+  G4double largestBackCapPosX=0.0;
+  G4double largestBackCapPosY=0.0;
+  G4double largestBackCapPosZ= 5.;
+
+  G4Tubs* largestBackCap = new G4Tubs("largestBackCap", 4./2, 8./2, 8./2., 0.0, 2.0*pi);
+  G4VisAttributes* largestBackCapLogic_att = new G4VisAttributes(yellow);
+  G4LogicalVolume* largestBackCapLogic = new G4LogicalVolume(largestBackCap, /*material=*/mat_iron, /*name=*/"largestBackCapLogic");
+  largestBackCapLogic->SetVisAttributes(largestBackCapLogic_att);
+  G4RotationMatrix* gr = new G4RotationMatrix(1, 0, 0);
+  G4PVPlacement* largestBackCapPhys = new G4PVPlacement(gr, G4ThreeVector(largestBackCapPosX,largestBackCapPosY,largestBackCapPosZ), largestBackCapLogic, "largestBackCapPhys", container, false, 0);
+
+#endif
 
     return World_phys;
 }
