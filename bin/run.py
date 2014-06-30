@@ -1,11 +1,11 @@
-#! / u s r / b i n / env python
+#! /usr/bin/env python
 import os , sys , time, commands
 startTime = time.time()
 #*********************************************
-# C O N F I G U R A T I O N 
+# C O N F I G U R A T I O N
 #*********************************************
 i0 = 0
-nthreads = 4   
+nthreads = 4
 threads = range(i0,i0+nthreads )
 # f e t c h c o n f i g from arguments i f p r e s e n t
 A = {}

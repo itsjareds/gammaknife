@@ -1,5 +1,5 @@
 
-# Definition des donnees de sortie (verbosities)
+# Data output verbosity definitions
 
 /control/verbose 0
 /run/verbose 0
@@ -7,12 +7,12 @@
 /tracking/verbose 0
 
 
-/vis/scene/create
-/vis/open VRML2FILE
-/tracking/storeTrajectory 1
-/vis/scene/add/trajectories
-/vis/scene/endOfEventAction accumulate
+#/vis/scene/create
+#/vis/open VRML2FILE
+#/tracking/storeTrajectory 1
+#/vis/scene/add/trajectories
+#/vis/scene/endOfEventAction accumulate
 
 
-# Lancement des particules primaires
-/run/beamOn 100000
+# Launch the primary particles
+/run/beamOn 1000000
