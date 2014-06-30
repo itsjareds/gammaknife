@@ -33,7 +33,7 @@ class Run(Thread):
     def run(self):
       A['THREAD'] = self.thread
       A['SEED'] = randint(0,1e9)
-      cmd = './RunBeam %d %d' % (A['THREAD'],A['SEED'])
+      cmd = '../RunBeam %d %d' % (A['THREAD'],A['SEED'])
       print cmd
       self.P = sp.Popen(cmd, shell=True,stdout=sp.PIPE, stderr=sp.PIPE)
       self.out = self.P.communicate()[0]
