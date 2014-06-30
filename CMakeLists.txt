@@ -24,13 +24,15 @@ include(${Geant4_USE_FILE})
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(/usr/include/root)
 include_directories(/usr/lib/root)
+include_directories(/newscratch/reudc13/opt/root/include)
 
 file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 
-set(ROOT_LIBRARIES -L/usr/lib/root -lCore -lCint -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lMatrix -lPhysics -lMathCore -lThread -pthread -lm -ldl -rdynamic)
-#SET(GCC_COVERAGE_COMPILE_FLAGS "-w -DPHASESPACE")
-SET(GCC_COVERAGE_COMPILE_FLAGS "-w")
+set(ROOT_LIBRARIES -L/usr/lib/root -L/newscratch/reudc13/opt/root/lib
+	-L/usr/lib64/root -L/home/g4vm/Programs/root/lib -lCore -lCint -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lMatrix -lPhysics -lMathCore -lThread -pthread -lm -ldl -rdynamic)
+SET(GCC_COVERAGE_COMPILE_FLAGS "-w -DPHASESPACE")
+#SET(GCC_COVERAGE_COMPILE_FLAGS "-w")
 SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}" )
 #----------------------------------------------------------------------------
 # Locate sources and headers for this project
