@@ -33,7 +33,13 @@ class Run(Thread):
     def run(self):
       A['THREAD'] = self.thread
       A['SEED'] = randint(0,1e9)
-      cmd = '../RunBeam %d %d' % (A['THREAD'],A['SEED'])
+      if os.path.isfile('./RunBeam'):
+        cmd = './RunBeam %d %d' % (A['THREAD'],A['SEED'])
+      elif os.path.isfile('../RunBeam'):
+        cmd = '../RunBeam %d %d' % (A['THREAD'],A['SEED'])
+      else:
+        print ' Fatal: No RunBeam binary found.'
+        sys.exit(1)
       print cmd
       self.P = sp.Popen(cmd, shell=True,stdout=sp.PIPE, stderr=sp.PIPE)
       self.out = self.P.communicate()[0]

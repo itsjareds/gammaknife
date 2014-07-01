@@ -26,9 +26,6 @@ include_directories(/usr/include/root)
 include_directories(/usr/lib/root)
 include_directories(/newscratch/reudc13/opt/root/include)
 
-file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
-file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
-
 set(ROOT_LIBRARIES -L/usr/lib/root -L/newscratch/reudc13/opt/root/lib
 	-L/usr/lib64/root -L/home/g4vm/Programs/root/lib -lCore -lCint -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lMatrix -lPhysics -lMathCore -lThread -pthread -lm -ldl -rdynamic)
 SET(GCC_COVERAGE_COMPILE_FLAGS "-w -DPHASESPACE")
@@ -40,6 +37,9 @@ SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}" )
 #
 file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
+file(GLOB binfiles ${PROJECT_SOURCE_DIR}/bin/*)
+
+file(COPY ${binfiles} DESTINATION ${PROJECT_BINARY_DIR})
 
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
