@@ -197,7 +197,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   //################################################################
 
 
-  //####container
+  //####device container
   G4double containerOuterDiam= 107.6352*mm;
   G4double containerHeight = 50.0126*mm + 51.5*2*mm + 89*mm + 1.5*mm;
   G4double containerPosX=0.0*mm;
@@ -205,18 +205,16 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4double containerPosZ=0.0*mm;
 
   G4Tubs* containerSolid = new G4Tubs("containerSolid", 0, containerOuterDiam/2., containerHeight/2., 0.0, 2.0*pi);
-  //uncomment later
 
   G4VisAttributes* container_att = new G4VisAttributes(yellow);
   G4LogicalVolume* container = new G4LogicalVolume(containerSolid, Air, "container",0,0,0);
 
   container->SetVisAttributes(container_att);
   G4RotationMatrix* zero_rotation = new G4RotationMatrix();
-  //uncomment later
   G4PVPlacement* containerPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(containerPosX,containerPosY,containerPosZ), container, "containerPhys", World_log, false, 0);
 
 
-  //####largest tube
+  //####outer container
 
   G4double largestTubeInnerDiam=12.1412;
   G4double largestTubeOuterDiam=27.6351;
@@ -235,7 +233,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4PVPlacement* largestTubePhys = new G4PVPlacement(zero_rotation, G4ThreeVector(largestTubePosX,largestTubePosY,largestTubePosZ), largestTubeLogic, "largestTubePhys", container, false, 0);
 
 
-  //####middle tube
+  //####middle container
 
   G4double middleTubeInnerDiam=7.112;
   G4double middleTubeOuterDiam=11.6078;
@@ -257,7 +255,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   //#sourceAssembly.AddPlacedVolume( middleTubeLogic, pos=(middleTubePosX,middleTubePosY,middleTubePosZ) )
 
 
-  //####smallest tube
+  //####inner container
 
   G4double smallestTubeInnerDiam=2.5908;
   G4double smallestTubeOuterDiam=6.604;
@@ -276,7 +274,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4PVPlacement* smallestTubePhys = new G4PVPlacement(zero_rotation, G4ThreeVector(smallestTubePosX,smallestTubePosY, smallestTubePosZ), smallestTubeLogic, "smallestTubePhys", container, false, 0);
 
 
-  //####cap of the largest tube
+  //####cap of the outer container
 
   G4double largestCapInnerDiam=8;
   //#largestCapOuterDiam=27.6351
@@ -299,7 +297,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 
 
-  //####cap of the middle tube
+  //####cap of the middle container
 
   G4double middleCapInnerDiam=0;
   //#middleCapOuterDiam=11.6078;
@@ -321,7 +319,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   //#sourceAssembly.AddPlacedVolume( middleCapLogic, pos=(middleCapPosX,middleCapPosY,middleCapPosZ) )
 
 
-  //####cap of the smallest tube
+  //####cap of the inner container
 
   G4double smallestCapInnerDiam=0. * mm;
   G4double smallestCapOuterDiam=2.5908 * mm;
@@ -332,10 +330,8 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   G4Tubs* smallestCap = new G4Tubs("smallestCap", smallestCapInnerDiam/2, smallestCapOuterDiam/2, smallestCapHeight/2., 0.0, 2.0*pi);
 
-  //uncomment later
   G4EllipticalCone* smallestCapCone = new G4EllipticalCone( "smallestCapCone", smallestCapOuterDiam/2, smallestCapOuterDiam/2, 0.7/2, 0.7/2);
 
-  //uncomment later
   G4SubtractionSolid* smallestCapSolid = new G4SubtractionSolid("smallestCap-smallestCapCone", smallestCap, smallestCapCone);
   G4VisAttributes* smallestCapSolid_att = new G4VisAttributes(cyan);
 
@@ -349,7 +345,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 
 
-  //####backcap of the largest tube
+  //####backcap of the outer container
 
   G4double largestBackCapInnerDiam=0. * mm;
   //#largestBackCapOuterDiam=27.6352;
@@ -370,7 +366,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   //#sourceAssembly.AddPlacedVolume( largestBackCapLogic, pos=(largestBackCapPosX,largestBackCapPosY,largestBackCapPosZ) )
 
 
-  //####backcap of the middle tube
+  //####backcap of the middle container
 
   G4double middleBackCapInnerDiam=0. * mm;
   //#middleBackCapOuterDiam=11.6078
@@ -384,13 +380,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4VisAttributes* middleBackCapLogic_att = new G4VisAttributes(green);
 
   G4LogicalVolume* middleBackCapLogic = new G4LogicalVolume(middleBackCap, /*material=*/mat_iron, /*name=*/"middleBackCapLogic");
-      //, /*color=*/skin);
-  //uncomment later
+
   middleBackCapLogic->SetVisAttributes(middleBackCapLogic_att);
   G4PVPlacement* middleBackCapPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(middleBackCapPosX,middleBackCapPosY,middleBackCapPosZ), middleBackCapLogic, "middleBackCapPhys", container, false, 0);
 
 
-  //####backcap of the smallest tube
+  //####backcap of the inner container
 
   G4double smallestBackCapInnerDiam=0. * mm;
   //#smallestBackCapOuterDiam=6.64
@@ -466,7 +461,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   //uncomment later
   G4VisAttributes* primaryCollLogic_att = new G4VisAttributes(red);
   G4LogicalVolume* primaryCollLogic = new G4LogicalVolume(primaryColl, /*material=*/mat_tungsten, /*name=*/"primaryCollLogic");
-      //, /*color=*/skin);
+
   primaryCollLogic->SetVisAttributes(primaryCollLogic_att);
   G4PVPlacement* primaryCollPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(primaryCollPosX,primaryCollPosY,primaryCollPosZ), primaryCollLogic, "primaryCollPhys", container, false, 0);
   //primaryCollLogic.SetForceWireFrame(1)
@@ -483,10 +478,10 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4double primaryColl2PosZ=( primaryCollPosZ +  primaryColl2Height ) * mm;
 
   G4Tubs* primaryColl2 = new G4Tubs("primaryColl2", primaryColl2InnerDiam/2., primaryColl2OuterDiam/2., primaryColl2Height/2., 0.0, 2.0*pi);
-  //uncomment later
+
   G4VisAttributes* primaryColl2Logic_att = new G4VisAttributes(blue);
   G4LogicalVolume* primaryColl2Logic = new G4LogicalVolume(primaryColl2, /*material=*/mat_tungsten, /*name=*/"primaryColl2Logic");
-      //, /*color=*/skin);
+
   primaryColl2Logic->SetVisAttributes(primaryColl2Logic_att);
   G4PVPlacement* primaryColl2Phys = new G4PVPlacement(zero_rotation, G4ThreeVector(primaryColl2PosX,primaryColl2PosY,primaryColl2PosZ), primaryColl2Logic, "primaryColl2Phys", container, false, 0);
   //primaryColl2Logic.SetForceWireFrame(1)
