@@ -39,7 +39,7 @@ file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 file(GLOB binfiles ${PROJECT_SOURCE_DIR}/bin/*)
 
-file(COPY ${binfiles} DESTINATION ${PROJECT_BINARY_DIR})
+#file(COPY ${binfiles} DESTINATION ${PROJECT_BINARY_DIR})
 
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
