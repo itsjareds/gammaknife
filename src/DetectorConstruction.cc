@@ -225,11 +225,10 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   G4Tubs* largestTube = new G4Tubs("largestTube", largestTubeInnerDiam/2, largestTubeOuterDiam/2, largestTubeHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* largestTube_att = new G4VisAttributes(red);
-  //uncomment later
+
   G4LogicalVolume* largestTubeLogic = new G4LogicalVolume(largestTube, /*material=*/mat_iron, /*name=*/"largestTubeLogic");
   largestTubeLogic->SetVisAttributes(largestTube_att);
-      //, /*color=*/skin);
-  //uncomment later
+
   G4PVPlacement* largestTubePhys = new G4PVPlacement(zero_rotation, G4ThreeVector(largestTubePosX,largestTubePosY,largestTubePosZ), largestTubeLogic, "largestTubePhys", container, false, 0);
 
 
@@ -244,11 +243,10 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   G4Tubs* middleTube = new G4Tubs("middleTube", middleTubeInnerDiam/2, middleTubeOuterDiam/2, middleTubeHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* middleTube_att = new G4VisAttributes(blue);
-  //uncomment later
+
   G4LogicalVolume* middleTubeLogic = new G4LogicalVolume(middleTube, /*material=*/mat_iron, /*name=*/"middleTubeLogic");
   middleTubeLogic->SetVisAttributes(middleTube_att);
-      //, /*color=*/fat);
-  //uncomment later
+
   G4PVPlacement* middleTubePhys = new G4PVPlacement(zero_rotation, G4ThreeVector(middleTubePosX,middleTubePosY,middleTubePosZ), middleTubeLogic, "middleTubePhys", container, false, 0);
   //middleTubeLogic.SetForceWireFrame(1)
 
@@ -548,10 +546,9 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4Tubs* sourceShielding = new G4Tubs("sourceShielding", sourceShieldingInnerDiam/2, sourceShieldingOuterDiam/2, sourceShieldingHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* sourceShieldingLogic_att = new G4VisAttributes(cyan);
   G4LogicalVolume* sourceShieldingLogic = new G4LogicalVolume(sourceShielding, /*material=*/mat_iron, /*name=*/"sourceShieldingLogic");
-      //, /*color=*/skin);
+
   sourceShieldingLogic->SetVisAttributes(sourceShieldingLogic_att);
   G4PVPlacement* sourceShieldingPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(sourceShieldingPosX,sourceShieldingPosY,sourceShieldingPosZ), sourceShieldingLogic, "sourceShieldingPhys", container, false, 0);
-  //uncomment later
   //sourceShieldingLogic->SetForceWireFrame(true);
   //#sourceShieldingLogic->SetForceSolid(true);
 
@@ -567,7 +564,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4Tubs* collimatorShielding = new G4Tubs("collimatorShielding", collimatorShieldingInnerDiam/2, collimatorShieldingOuterDiam/2, collimatorShieldingHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* collimatorShieldingLogic_att = new G4VisAttributes(brown);
   G4LogicalVolume* collimatorShieldingLogic = new G4LogicalVolume(collimatorShielding, /*material=*/mat_iron, /*name=*/"collimatorLogic");
-      //, /*color=*/skin);
+
   collimatorShieldingLogic->SetVisAttributes(collimatorShieldingLogic_att);
   G4PVPlacement* collimatorShieldingPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(collimatorShieldingPosX,collimatorShieldingPosY,collimatorShieldingPosZ), collimatorShieldingLogic, "collimatorShieldingPhys", container, false, 0);
   //collimatorShieldingLogic.SetForceWireFrame(1)
