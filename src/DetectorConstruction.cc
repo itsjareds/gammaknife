@@ -155,6 +155,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4Element* el_Cr = new G4Element(name="Cr",symbol="Cr",z=24.0,a=51.996*g/mole);
   G4Element* el_N = new G4Element(name="N",symbol="N",z=7.0, a=14.01*g/mole);
   G4Element* el_W  = new G4Element("Tungsten", symbol="W", z=74., a=183.84*g/mole);
+  G4Element* el_Co = new G4Element("Cobalt", symbol="Co", z=27., a=60.*g/mole);
 
   G4Material* mat_Ti =  new G4Material(name="mat_Ti",density=4.54*g/cm3,nel=1);
   mat_Ti->AddElement(el_Ti,1);
@@ -183,6 +184,10 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   G4Material* mat_tungsten = new G4Material("Tungsten", density=19.25*g/cm3, nel=1);
   mat_tungsten->AddElement(el_W, 1);
+
+//FIXME: find correct density of Co-60
+  G4Material* mat_cobalt_ion = new G4Material("Cobalt", density=8.86*g/cm3, nel=1);
+  mat_cobalt_ion->AddElement(el_Co, 1);
 
 
   G4Material * mat_plexiglas = new G4Material("Plexiglas", density= 1.19*g/cm3, nel=3);
@@ -352,7 +357,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   G4Tubs* largestBackCap = new G4Tubs("largestBackCap", largestBackCapInnerDiam/2., largestBackCapOuterDiam/2., largestBackCapHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* largestBackCapLogic_att = new G4VisAttributes(yellow);
-  largestBackCapLogic_att->SetVisibility(0);
+  //largestBackCapLogic_att->SetVisibility(0);
 
   G4LogicalVolume* largestBackCapLogic = new G4LogicalVolume(largestBackCap, /*material=*/mat_iron, /*name=*/"largestBackCapLogic");
   largestBackCapLogic->SetVisAttributes(largestBackCapLogic_att);
@@ -373,6 +378,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   G4Tubs* middleBackCap = new G4Tubs("middleBackCap", middleBackCapInnerDiam/2., middleBackCapOuterDiam/2., middleBackCapHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* middleBackCapLogic_att = new G4VisAttributes(green);
+  //middleBackCapLogic_att->SetVisibility(0);
 
   G4LogicalVolume* middleBackCapLogic = new G4LogicalVolume(middleBackCap, /*material=*/mat_iron, /*name=*/"middleBackCapLogic");
 
@@ -392,6 +398,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   G4Tubs* smallestBackCap = new G4Tubs("smallestBackCap", smallestBackCapInnerDiam/2., smallestBackCapOuterDiam/2., smallestBackCapHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* smallestBackCapLogic_att = new G4VisAttributes(white);
+  //smallestBackCapLogic_att->SetVisibility(0);
 
   G4LogicalVolume* smallestBackCapLogic = new G4LogicalVolume(smallestBackCap, /*material=*/mat_iron, /*name=*/"smallestBackCapLogic");
   smallestBackCapLogic->SetVisAttributes(smallestBackCapLogic_att);
@@ -410,9 +417,9 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   G4Tubs* cobalt = new G4Tubs("cobalt", cobaltInnerDiam/2., cobaltOuterDiam/2., cobaltHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* cobaltLogic_att = new G4VisAttributes(black);
-  cobaltLogic_att->SetVisibility(0);
+  //cobaltLogic_att->SetVisibility(0);
 
-  G4LogicalVolume* cobaltLogic = new G4LogicalVolume(cobalt, /*material=*/mat_iron, /*name=*/"cobaltLogic");
+  G4LogicalVolume* cobaltLogic = new G4LogicalVolume(cobalt, /*material=*/mat_cobalt_ion, /*name=*/"cobaltLogic");
   cobaltLogic->SetVisAttributes(cobaltLogic_att);
   G4PVPlacement* cobaltPhys = new G4PVPlacement(zero_rotation, G4ThreeVector(cobaltPosX,cobaltPosY,cobaltPosZ), cobaltLogic, "cobaltPhys", container, false, 0);
 
@@ -455,7 +462,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4Tubs* primaryColl = new G4Tubs("primaryColl", primaryCollInnerDiam/2., primaryCollOuterDiam/2., primaryCollHeight/2., 0.0, 2.0*pi);
   //uncomment later
   G4VisAttributes* primaryCollLogic_att = new G4VisAttributes(red);
-  primaryCollLogic_att->SetVisibility(0);
+  //primaryCollLogic_att->SetVisibility(0);
   G4LogicalVolume* primaryCollLogic = new G4LogicalVolume(primaryColl, /*material=*/mat_tungsten, /*name=*/"primaryCollLogic");
 
   primaryCollLogic->SetVisAttributes(primaryCollLogic_att);
@@ -475,7 +482,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4Tubs* primaryColl2 = new G4Tubs("primaryColl2", primaryColl2InnerDiam/2., primaryColl2OuterDiam/2., primaryColl2Height/2., 0.0, 2.0*pi);
 
   G4VisAttributes* primaryColl2Logic_att = new G4VisAttributes(blue);
-  primaryColl2Logic_att->SetVisibility(0);
+  //primaryColl2Logic_att->SetVisibility(0);
   G4LogicalVolume* primaryColl2Logic = new G4LogicalVolume(primaryColl2, /*material=*/mat_tungsten, /*name=*/"primaryColl2Logic");
 
   primaryColl2Logic->SetVisAttributes(primaryColl2Logic_att);

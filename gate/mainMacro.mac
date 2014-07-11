@@ -57,8 +57,8 @@
 
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
 #                                                                 #
-#     D E F I N I T I O N   A N D   D E S C R I T I O N           #
-#        O F   Y O U R   P E T   D E V I C E                      #
+#     D E F I N I T I O N   A N D   D E S C R I P T I O N         #
+#           O F   G A M M A K N I F E   D E V I C E               #
 #                                                                 #
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
 
@@ -72,6 +72,8 @@
 /gate/container/setMaterial                   Air
 /gate/container/vis/forceWireframe
 /gate/container/vis/setColor                  yellow
+
+### TUBE DEFINITIONS
 
 # OUTER TUBE
 /gate/container/daughters/name                largestTube
@@ -104,6 +106,8 @@
 /gate/innerTube/setMaterial                   SS304
 /gate/innerTube/vis/setColor                  green
 
+### CAP DEFINITIONS
+
 # OUTER CONTAINER CAP
 /gate/largestTube/daughters/name              largestCap
 /gate/largestTube/daughters/insert            cylinder
@@ -124,6 +128,7 @@
 /gate/middleCap/setMaterial                   SS304
 /gate/middleCap/vis/setColor                  magenta
 
+## STILL NEEDS CONE SUBTRACTED
 # INNER CONTAINER CAP
 /gate/innerTube/daughters/name                innerCap
 /gate/innerTube/daughters/insert              cylinder
@@ -134,6 +139,50 @@
 /gate/innerCap/geometry/setHeight             0.685 mm
 /gate/innerCap/setMaterial                    SS304
 /gate/innerCap/vis/setColor                   cyan
+
+# OUTER CONTAINER BACK CAP
+/gate/largestTube/daughters/name              largestBackCap
+/gate/largestTube/daughters/insert            cylinder
+/gate/largestBackCap/placement/setTranslation 0.0 0.0 -23.876 mm
+/gate/largestBackCap/geometry/setRmax         5.8039 mm
+/gate/largestBackCap/geometry/setRmin         0. mm
+/gate/largestBackCap/geometry/setHeight       2.2606 mm
+/gate/largestBackCap/setMaterial              SS304
+/gate/largestBackCap/vis/setColor             yellow
+
+# MIDDLE CONTAINER BACK CAP
+/gate/middleTube/daughters/name               middleBackCap
+/gate/middleTube/daughters/insert             cylinder
+/gate/middleBackCap/placement/setTranslation  0.0 0.0 -17.1831 mm
+/gate/middleBackCap/geometry/setRmax          3.302 mm
+/gate/middleBackCap/geometry/setRmin          0. mm
+/gate/middleBackCap/geometry/setHeight        2.0574 mm
+/gate/middleBackCap/setMaterial               SS304
+/gate/middleBackCap/vis/setColor              green
+
+# INNER CONTAINER BACK CAP
+/gate/innerTube/daughters/name                innerBackCap
+/gate/innerTube/daughters/insert              cylinder
+/gate/innerBackCap/placement/setTranslation   0.0 0.0 -15.4719 mm
+/gate/innerBackCap/geometry/setRmax           1.2954 mm
+/gate/innerBackCap/geometry/setRmin           0. mm
+/gate/innerBackCap/geometry/setHeight         2. mm
+/gate/innerBackCap/setMaterial                SS304
+/gate/innerBackCap/vis/setColor               white
+
+## !! STILL NEED COBALT FILLING & TUNGSTEN PLUG !!
+
+### COLLIMATOR DEFINITIONS
+
+# PRIMARY COLLIMATOR
+/gate/container/daughters/name                primaryColl
+/gate/container/daughters/insert              cylinder
+/gate/primaryColl/placement/setTranslation    0.0 0.0 -45.9937 mm
+/gate/primaryColl/geometry/setRmax            12.5 mm
+/gate/primaryColl/geometry/setRmin            3.25 mm
+/gate/primaryColl/geometry/setHeight          51.5 mm
+/gate/primaryColl/setMaterial                 Tungsten
+/gate/primaryColl/vis/setColor                red
 
 
 #	CYLINDRICAL
@@ -147,7 +196,7 @@
 /gate/cylindricalPET/vis/forceWireframe
 /gate/cylindricalPET/vis/setColor             white
 #
-/gate/cylindricalPET/vis/setVisible                     0
+/gate/cylindricalPET/vis/setVisible           0
 
 #	HEAD
 /gate/cylindricalPET/daughters/name           head
