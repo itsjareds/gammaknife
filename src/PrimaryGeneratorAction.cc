@@ -25,20 +25,29 @@ G4double PrimaryGeneratorAction::GetEmissionEnergy() {
 G4ThreeVector PrimaryGeneratorAction::GetEmissionPosition() {
 
   G4ThreeVector v;
-  G4double radius = 2.5908*mm;
-  G4double length = 30.2588*mm;
-  G4double   rad = G4UniformRand() * radius;
-  G4double angle = G4UniformRand() * 6.28318f;
-  v[0] = cos(angle) * rad;
-  v[1] = sin(angle) * rad;
-  v[2] = G4UniformRand()*length - length/2.0;
-  v[2] -= 89.3869*mm;
+  //G4double radius = 2.5908/2. * mm;
+  G4double radius = 1.2954 * mm;
+  G4double length = 30.2588 * mm;
 
-  return v;//G4ThreeVector(0.3*mm,0,2*mm);
+  G4double randX, randY;
+  bool rejection = 1;
+
+  while (rejection) {
+    randX = (G4UniformRand()*2. - 1.)*radius;
+    randY = (G4UniformRand()*2. - 1.)*radius;
+    if (randX*randX + randY*randY <= radius*radius)
+      rejection = 0;
+  }
+
+  v[0] = randX;
+  v[1] = randY;
+  v[2] = -(G4UniformRand()*length - length/2.) - 90.0444*mm;
+
+  return v;
 }
 
 G4ThreeVector PrimaryGeneratorAction::GetEmissionDirection() {
-  //WARINING  ISOTROPIC DISTRIBUTION
+  //WARNING ISOTROPIC DISTRIBUTION
   //return G4ThreeVector(0,0,1);
   return G4RandomDirection();
 }
