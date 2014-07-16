@@ -2,11 +2,11 @@
 
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
 #
-#         D E F I N E   Y O U R   S C A N N E R   A N D
+#            D E F I N E   G A M M A K N I F E   A N D
 #
-#        Y O U R   C O M P L E T E   S I M U L A T I O N
+#       T O T A L L Y   C O M P L E T E   S I M U L A T I O N
 #
-#        F O R   I M A G I N G    A P P L I CA T I O N S
+#      F O R     D O S I M E T R I C    A P P L I CA T I O N S
 #
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
 
@@ -26,11 +26,11 @@
 /vis/scene/endOfEventAction         accumulate
 
 #custom
-/vis/scene/create
-/vis/open VRML2FILE
-/tracking/storeTrajectory 1
-/vis/scene/add/trajectories
-/vis/scene/endOfEventAction accumulate
+#/vis/scene/create
+#/vis/open VRML2FILE
+#/tracking/storeTrajectory 1
+#/vis/scene/add/trajectories
+#/vis/scene/endOfEventAction accumulate
 #/custom
 
 /control/execute                    Verbose.mac
@@ -47,12 +47,12 @@
 #
 #     W O R L D
 #
-#/gate/world/geometry/setXLength       400. cm
-#/gate/world/geometry/setYLength       400. cm
-#/gate/world/geometry/setZLength       400. cm
-/gate/world/geometry/setXLength       400. mm
-/gate/world/geometry/setYLength       400. mm
-/gate/world/geometry/setZLength       400. mm
+/gate/world/geometry/setXLength       200. cm
+/gate/world/geometry/setYLength       200. cm
+/gate/world/geometry/setZLength       200. cm
+#/gate/world/geometry/setXLength       400. mm
+#/gate/world/geometry/setYLength       400. mm
+#/gate/world/geometry/setZLength       400. mm
 
 
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
@@ -62,22 +62,28 @@
 #                                                                 #
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
 
+# ----------------------------
+# COBALT SOURCE AND COLLIMATOR
+# ----------------------------
+
 # CONTAINER
-/gate/world/daughters/name                    container
+/gate/world/daughters/name                    ionSource
 /gate/world/daughters/insert                  cylinder
-/gate/container/placement/setTranslation      0.0 0.0 0.0 mm
-/gate/container/geometry/setRmax              53.8176 mm
-/gate/container/geometry/setRmin              0.0 mm
-/gate/container/geometry/setHeight            243.5126 mm
-/gate/container/setMaterial                   Air
-/gate/container/vis/forceWireframe
-/gate/container/vis/setColor                  yellow
+/gate/ionSource/placement/setTranslation      0.0 0.0 0.0 mm
+/gate/ionSource/geometry/setRmax              53.8176 mm
+/gate/ionSource/geometry/setRmin              0.0 mm
+/gate/ionSource/geometry/setHeight            243.5126 mm
+/gate/ionSource/setMaterial                   Air
+/gate/ionSource/vis/forceWireframe
+/gate/ionSource/vis/setColor                  yellow
+/gate/ionSource/placement/setRotationAxis     1 0 0
+/gate/ionSource/placement/setRotationAngle    90 deg
 
 ### TUBE DEFINITIONS
 
 # OUTER TUBE
-/gate/container/daughters/name                largestTube
-/gate/container/daughters/insert              cylinder
+/gate/ionSource/daughters/name                largestTube
+/gate/ionSource/daughters/insert              cylinder
 /gate/largestTube/placement/setTranslation    0.0 0.0 -96.75 mm
 /gate/largestTube/geometry/setRmax            13.81755 mm
 /gate/largestTube/geometry/setRmin            6.0706 mm
@@ -174,15 +180,80 @@
 
 ### COLLIMATOR DEFINITIONS
 
-# PRIMARY COLLIMATOR
-/gate/container/daughters/name                primaryColl
-/gate/container/daughters/insert              cylinder
+# PRIMARY COLLIMATOR 1
+/gate/ionSource/daughters/name                primaryColl
+/gate/ionSource/daughters/insert              cylinder
 /gate/primaryColl/placement/setTranslation    0.0 0.0 -45.9937 mm
 /gate/primaryColl/geometry/setRmax            12.5 mm
 /gate/primaryColl/geometry/setRmin            3.25 mm
 /gate/primaryColl/geometry/setHeight          51.5 mm
 /gate/primaryColl/setMaterial                 Tungsten
 /gate/primaryColl/vis/setColor                red
+
+# PRIMARY COLLIMATOR 2
+/gate/ionSource/daughters/name                primaryColl2
+/gate/ionSource/daughters/insert              cylinder
+/gate/primaryColl2/placement/setTranslation   0.0 0.0 5.5063 mm
+/gate/primaryColl2/geometry/setRmax           12.5 mm
+/gate/primaryColl2/geometry/setRmin           3.25 mm
+/gate/primaryColl2/geometry/setHeight         51.5 mm
+/gate/primaryColl2/setMaterial                Tungsten
+/gate/primaryColl2/vis/setColor               blue
+
+# SECONDARY COLLIMATOR (4mm)
+/gate/ionSource/daughters/name                coll
+/gate/ionSource/daughters/insert              cylinder
+/gate/coll/placement/setTranslation           0.0 0.0 77.2563 mm
+/gate/coll/geometry/setRmax                   10. mm
+/gate/coll/geometry/setRmin                   1.3 mm
+/gate/coll/geometry/setHeight                 89. mm
+/gate/coll/setMaterial                        Tungsten
+/gate/coll/vis/setColor                       magenta
+
+## !! STILL NEED 8/14/18 mm COLLIMATORS W/ BOOLEAN SOLIDS !!
+
+### SHIELDING DEFINITIONS
+
+# SOURCE SHIELDING
+/gate/ionSource/daughters/name                sourceShield
+/gate/ionSource/daughters/insert              cylinder
+/gate/sourceShield/placement/setTranslation   0.0 0.0 -45.25 mm
+/gate/sourceShield/geometry/setRmax           53.8176 mm
+/gate/sourceShield/geometry/setRmin           13.8176 mm
+/gate/sourceShield/geometry/setHeight         153.0126 mm
+/gate/sourceShield/setMaterial                SS304
+/gate/sourceShield/vis/setColor               cyan
+
+# COLLIMATOR SHIELDING
+/gate/ionSource/daughters/name                collShield
+/gate/ionSource/daughters/insert              cylinder
+/gate/collShield/placement/setTranslation     0.0 0.0 77.2563 mm
+/gate/collShield/geometry/setRmax             53.8176 mm
+/gate/collShield/geometry/setRmin             10. mm
+/gate/collShield/geometry/setHeight           89. mm
+/gate/collShield/setMaterial                  SS304
+/gate/collShield/vis/setColor                 grey
+
+
+# ----------------------------
+# REPEAT SOURCE AND COLLIMATOR
+# ----------------------------
+
+/gate/ionSource/repeaters/insert              sphere
+/gate/ionSource/sphere/setRadius              260.5 mm
+/gate/ionSource/sphere/setPhiAngle            60 deg
+/gate/ionSource/sphere/setRepeatNumberWithPhi 6
+#/gate/ionSource/sphere/setRepeatVector        0.0 3.2 4.0 mm
+
+
+# ----------------------------
+# MOVEMENT OF SOURCE OVER TIME
+# ----------------------------
+
+/gate/ionSource/moves/insert                  orbiting
+/gate/ionSource/orbiting/setSpeed             5 deg/s
+/gate/ionSource/orbiting/setPoint1            0 0 0 cm
+/gate/ionSource/orbiting/setPoint2            0 1 0 cm
 
 
 #	CYLINDRICAL
