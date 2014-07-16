@@ -21,9 +21,9 @@
 #include "G4SubtractionSolid.hh"
 #include "G4Cons.hh"
 
-//#define COLL4
+#define COLL4
 //#define COLL8
-#define COLL14
+//#define COLL14
 //#define COLL18
 
 DetectorConstruction* DetectorConstruction::theDetector=NULL;
