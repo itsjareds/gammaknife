@@ -203,11 +203,11 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 
   //####device container
-  G4double containerOuterDiam= 107.6352*mm;
+  G4double containerOuterDiam = 107.6352*mm;
   G4double containerHeight = 50.0126*mm + 51.5*2*mm + 89*mm + 1.5*mm;
-  G4double containerPosX=0.0*mm;
-  G4double containerPosY=0.0*mm;
-  G4double containerPosZ=0.0*mm;
+  G4double containerPosX = 0.0*mm;
+  G4double containerPosY = 0.0*mm;
+  G4double containerPosZ = 0.0*mm;
 
   G4Tubs* containerSolid = new G4Tubs("containerSolid", 0, containerOuterDiam/2., containerHeight/2., 0.0, 2.0*pi);
 
@@ -221,12 +221,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   //####outer container
 
-  G4double largestTubeInnerDiam=12.1412 * mm;
-  G4double largestTubeOuterDiam=27.6351 * mm;
+  G4double largestTubeInnerDiam = 12.1412 * mm;
+  G4double largestTubeOuterDiam = 27.6351 * mm;
   G4double largestTubeHeight = 50.0126 * mm;
-  G4double largestTubePosX=0.0 * mm;
-  G4double largestTubePosY=0.0 * mm;
-  G4double largestTubePosZ=largestTubeHeight/2 - containerHeight/2;
+  G4double largestTubePosX = 0.0 * mm;
+  G4double largestTubePosY = 0.0 * mm;
+  G4double largestTubePosZ = largestTubeHeight/2 - containerHeight/2;
 
   G4Tubs* largestTube = new G4Tubs("largestTube", largestTubeInnerDiam/2, largestTubeOuterDiam/2, largestTubeHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* largestTube_att = new G4VisAttributes(red);
@@ -240,12 +240,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   //####middle container
 
-  G4double middleTubeInnerDiam=7.112 * mm;
-  G4double middleTubeOuterDiam=11.6078 * mm;
-  G4double middleTubeHeight=36.4236 * mm;
-  G4double middleTubePosX=0.0 * mm;
-  G4double middleTubePosY=0.0 * mm;
-  G4double middleTubePosZ= ( (largestTubeHeight-middleTubeHeight)/2 - 1.4224 + largestTubeHeight/2 ) - containerHeight/2;
+  G4double middleTubeInnerDiam = 7.112 * mm;
+  G4double middleTubeOuterDiam = 11.6078 * mm;
+  G4double middleTubeHeight = 36.4236 * mm;
+  G4double middleTubePosX = 0.0 * mm;
+  G4double middleTubePosY = 0.0 * mm;
+  G4double middleTubePosZ = ( (largestTubeHeight-middleTubeHeight)/2 - 1.4224 + largestTubeHeight/2 ) - containerHeight/2;
 
   G4Tubs* middleTube = new G4Tubs("middleTube", middleTubeInnerDiam/2, middleTubeOuterDiam/2, middleTubeHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* middleTube_att = new G4VisAttributes(blue);
@@ -261,12 +261,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   //####inner container
 
-  G4double smallestTubeInnerDiam=2.5908;
-  G4double smallestTubeOuterDiam=6.604;
-  G4double smallestTubeHeight=32.9438;
-  G4double smallestTubePosX=0.0;
-  G4double smallestTubePosY=0.0;
-  G4double smallestTubePosZ=( (largestTubeHeight-smallestTubeHeight) /2 - 1.4224 -0.4064 + largestTubeHeight/2 ) - containerHeight/2;
+  G4double smallestTubeInnerDiam = 2.5908;
+  G4double smallestTubeOuterDiam = 6.604;
+  G4double smallestTubeHeight = 32.9438;
+  G4double smallestTubePosX = 0.0;
+  G4double smallestTubePosY = 0.0;
+  G4double smallestTubePosZ = ( (largestTubeHeight-smallestTubeHeight) /2 - 1.4224 -0.4064 + largestTubeHeight/2 ) - containerHeight/2;
 
   G4Tubs* smallestTube = new G4Tubs("smallestTube", smallestTubeInnerDiam/2, smallestTubeOuterDiam/2, smallestTubeHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* smallestTubeLogic_att = new G4VisAttributes(green);
@@ -279,13 +279,13 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   //####cap of the outer container
 
-  G4double largestCapInnerDiam=8. * mm;
-  //#largestCapOuterDiam=27.6351
-  G4double largestCapOuterDiam=middleTubeOuterDiam;
-  G4double largestCapHeight=1.4224 * mm;
-  G4double largestCapPosX=0.0 * mm;
-  G4double largestCapPosY=0.0 * mm;
-  G4double largestCapPosZ=(largestTubeHeight/2 - 1.4224/2 + largestTubeHeight/2) - containerHeight/2;
+  G4double largestCapInnerDiam = 8. * mm;
+  //#largestCapOuterDiam = 27.6351
+  G4double largestCapOuterDiam = middleTubeOuterDiam;
+  G4double largestCapHeight = 1.4224 * mm;
+  G4double largestCapPosX = 0.0 * mm;
+  G4double largestCapPosY = 0.0 * mm;
+  G4double largestCapPosZ = (largestTubeHeight/2 - 1.4224/2 + largestTubeHeight/2) - containerHeight/2;
 
   G4Tubs* largestCap = new G4Tubs("largestCap", largestCapInnerDiam/2, largestCapOuterDiam/2, largestCapHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* largestCapLogic_att = new G4VisAttributes(white);
@@ -301,13 +301,13 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   //####cap of the middle container
 
-  G4double middleCapInnerDiam=0.0 * mm;
-  //#middleCapOuterDiam=11.6078;
-  G4double middleCapOuterDiam=smallestTubeOuterDiam;
-  G4double middleCapHeight=0.4064 * mm;
-  G4double middleCapPosX=0.0 * mm;
-  G4double middleCapPosY=0.0 * mm;
-  G4double middleCapPosZ=( (largestTubeHeight -middleCapHeight)/2 - largestCapHeight + largestTubeHeight/2 ) - containerHeight/2;
+  G4double middleCapInnerDiam = 0.0 * mm;
+  //#middleCapOuterDiam = 11.6078;
+  G4double middleCapOuterDiam = smallestTubeOuterDiam;
+  G4double middleCapHeight = 0.4064 * mm;
+  G4double middleCapPosX = 0.0 * mm;
+  G4double middleCapPosY = 0.0 * mm;
+  G4double middleCapPosZ = ( (largestTubeHeight -middleCapHeight)/2 - largestCapHeight + largestTubeHeight/2 ) - containerHeight/2;
 
   G4Tubs* middleCap = new G4Tubs("middleCap", middleCapInnerDiam/2, middleCapOuterDiam/2, middleCapHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* middleCapLogic_att = new G4VisAttributes(magenta);
@@ -322,12 +322,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   //####cap of the inner container
 
-  G4double smallestCapInnerDiam=0. * mm;
-  G4double smallestCapOuterDiam=2.5908 * mm;
-  G4double smallestCapHeight=0.685 * mm;
-  G4double smallestCapPosX=0.0 * mm;
-  G4double smallestCapPosY=0.0 * mm;
-  G4double smallestCapPosZ=( (50.0126*mm - 32.9438*mm ) /2.*mm - 1.4224*mm -0.4064*mm  + (smallestTubeHeight - smallestCapHeight )/2. + largestTubeHeight/2. ) - containerHeight/2.;
+  G4double smallestCapInnerDiam = 0. * mm;
+  G4double smallestCapOuterDiam = 2.5908 * mm;
+  G4double smallestCapHeight = 0.685 * mm;
+  G4double smallestCapPosX = 0.0 * mm;
+  G4double smallestCapPosY = 0.0 * mm;
+  G4double smallestCapPosZ = ( (50.0126*mm - 32.9438*mm ) /2.*mm - 1.4224*mm -0.4064*mm  + (smallestTubeHeight - smallestCapHeight )/2. + largestTubeHeight/2. ) - containerHeight/2.;
 
   G4Tubs* smallestCap = new G4Tubs("smallestCap", smallestCapInnerDiam/2, smallestCapOuterDiam/2, smallestCapHeight/2., 0.0, 2.0*pi);
 
@@ -347,13 +347,13 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   //####backcap of the outer container
 
-  G4double largestBackCapInnerDiam=0. * mm;
-  //#largestBackCapOuterDiam=27.6352;
-  G4double largestBackCapOuterDiam=middleTubeOuterDiam;
-  G4double largestBackCapHeight=2.2606 * mm;
-  G4double largestBackCapPosX=0.0 * mm;
-  G4double largestBackCapPosY=0.0 * mm;
-  G4double largestBackCapPosZ= (-largestTubeHeight/2. + largestBackCapHeight/2.  + largestTubeHeight/2.) -containerHeight/2.;
+  G4double largestBackCapInnerDiam = 0. * mm;
+  //#largestBackCapOuterDiam = 27.6352;
+  G4double largestBackCapOuterDiam = middleTubeOuterDiam;
+  G4double largestBackCapHeight = 2.2606 * mm;
+  G4double largestBackCapPosX = 0.0 * mm;
+  G4double largestBackCapPosY = 0.0 * mm;
+  G4double largestBackCapPosZ = (-largestTubeHeight/2. + largestBackCapHeight/2.  + largestTubeHeight/2.) -containerHeight/2.;
 
   G4Tubs* largestBackCap = new G4Tubs("largestBackCap", largestBackCapInnerDiam/2., largestBackCapOuterDiam/2., largestBackCapHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* largestBackCapLogic_att = new G4VisAttributes(yellow);
@@ -368,13 +368,13 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   //####backcap of the middle container
 
-  G4double middleBackCapInnerDiam=0. * mm;
-  //#middleBackCapOuterDiam=11.6078
-  G4double middleBackCapOuterDiam=smallestTubeOuterDiam;
-  G4double middleBackCapHeight=2.0574 * mm;
-  G4double middleBackCapPosX=0.0 * mm;
-  G4double middleBackCapPosY=0.0 * mm;
-  G4double middleBackCapPosZ=( middleTubePosZ-middleTubeHeight/2. + middleBackCapHeight/2. );
+  G4double middleBackCapInnerDiam = 0. * mm;
+  //#middleBackCapOuterDiam = 11.6078
+  G4double middleBackCapOuterDiam = smallestTubeOuterDiam;
+  G4double middleBackCapHeight = 2.0574 * mm;
+  G4double middleBackCapPosX = 0.0 * mm;
+  G4double middleBackCapPosY = 0.0 * mm;
+  G4double middleBackCapPosZ = ( middleTubePosZ-middleTubeHeight/2. + middleBackCapHeight/2. );
 
   G4Tubs* middleBackCap = new G4Tubs("middleBackCap", middleBackCapInnerDiam/2., middleBackCapOuterDiam/2., middleBackCapHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* middleBackCapLogic_att = new G4VisAttributes(green);
@@ -388,13 +388,13 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   //####backcap of the inner container
 
-  G4double smallestBackCapInnerDiam=0. * mm;
+  G4double smallestBackCapInnerDiam = 0. * mm;
   //#smallestBackCapOuterDiam=6.64
-  G4double smallestBackCapOuterDiam=smallestTubeInnerDiam;
-  G4double smallestBackCapHeight=2. * mm;
-  G4double smallestBackCapPosX=0.0 * mm;
-  G4double smallestBackCapPosY=0.0 * mm;
-  G4double smallestBackCapPosZ=( smallestTubePosZ - smallestTubeHeight/2. + smallestBackCapHeight/2. );
+  G4double smallestBackCapOuterDiam = smallestTubeInnerDiam;
+  G4double smallestBackCapHeight = 2. * mm;
+  G4double smallestBackCapPosX = 0.0 * mm;
+  G4double smallestBackCapPosY = 0.0 * mm;
+  G4double smallestBackCapPosZ = ( smallestTubePosZ - smallestTubeHeight/2. + smallestBackCapHeight/2. );
 
   G4Tubs* smallestBackCap = new G4Tubs("smallestBackCap", smallestBackCapInnerDiam/2., smallestBackCapOuterDiam/2., smallestBackCapHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* smallestBackCapLogic_att = new G4VisAttributes(white);
@@ -407,12 +407,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   //####Cobalt filling
 
-  G4double cobaltInnerDiam=0. * mm;
-  G4double cobaltOuterDiam=smallestTubeInnerDiam;
-  G4double cobaltHeight=smallestTubeHeight - smallestBackCapHeight - smallestCapHeight;
-  G4double cobaltPosX=0.0 * mm;
-  G4double cobaltPosY=0.0 * mm;
-  G4double cobaltPosZ=( smallestTubePosZ + (smallestTubeHeight - cobaltHeight )/2. - smallestCapHeight  )*mm;
+  G4double cobaltInnerDiam = 0. * mm;
+  G4double cobaltOuterDiam = smallestTubeInnerDiam;
+  G4double cobaltHeight = smallestTubeHeight - smallestBackCapHeight - smallestCapHeight;
+  G4double cobaltPosX = 0.0 * mm;
+  G4double cobaltPosY = 0.0 * mm;
+  G4double cobaltPosZ = ( smallestTubePosZ + (smallestTubeHeight - cobaltHeight )/2. - smallestCapHeight  )*mm;
 
 
   G4Tubs* cobalt = new G4Tubs("cobalt", cobaltInnerDiam/2., cobaltOuterDiam/2., cobaltHeight/2., 0.0, 2.0*pi);
@@ -430,12 +430,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   //####Tungsten plug
   //note: units converted in->mm from spec sheet
 
-  G4double tungstenPlugInnerDiam=0. * mm;
-  G4double tungstenPlugOuterDiam=12.0142 * mm;
-  G4double tungstenPlugHeight=9.271 * mm;
-  G4double tungstenPlugPosX=0.0 * mm;
-  G4double tungstenPlugPosY=0.0 * mm;
-  G4double tungstenPlugPosZ=(middleTubePosZ-middleTubeHeight/2. -tungstenPlugHeight/2. );
+  G4double tungstenPlugInnerDiam = 0. * mm;
+  G4double tungstenPlugOuterDiam = 12.0142 * mm;
+  G4double tungstenPlugHeight = 9.271 * mm;
+  G4double tungstenPlugPosX = 0.0 * mm;
+  G4double tungstenPlugPosY = 0.0 * mm;
+  G4double tungstenPlugPosZ = (middleTubePosZ-middleTubeHeight/2. -tungstenPlugHeight/2. );
 
   G4Tubs* tungstenPlug = new G4Tubs("tungstenPlug", tungstenPlugInnerDiam/2., tungstenPlugOuterDiam/2., tungstenPlugHeight/2., 0.0, 2.0*pi);
   G4VisAttributes* tungstenPlugLogic_att = new G4VisAttributes(red);
@@ -452,12 +452,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   //####primary coll
 
-  G4double primaryCollInnerDiam=6.5 * mm;
-  G4double primaryCollOuterDiam=25. * mm;
-  G4double primaryCollHeight=51.5 * mm;
-  G4double primaryCollPosX=0.0 * mm;
-  G4double primaryCollPosY=0.0 * mm;
-  G4double primaryCollPosZ= (50.0126 + primaryCollHeight  + largestTubeHeight - containerHeight) * mm / 2.;
+  G4double primaryCollInnerDiam = 6.5 * mm;
+  G4double primaryCollOuterDiam = 25. * mm;
+  G4double primaryCollHeight = 51.5 * mm;
+  G4double primaryCollPosX = 0.0 * mm;
+  G4double primaryCollPosY = 0.0 * mm;
+  G4double primaryCollPosZ = (50.0126 + primaryCollHeight  + largestTubeHeight - containerHeight) * mm / 2.;
 
   G4Tubs* primaryColl = new G4Tubs("primaryColl", primaryCollInnerDiam/2., primaryCollOuterDiam/2., primaryCollHeight/2., 0.0, 2.0*pi);
   //uncomment later
@@ -472,12 +472,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 
 
-  G4double primaryColl2InnerDiam=6.5 * mm;
-  G4double primaryColl2OuterDiam=25. * mm;
-  G4double primaryColl2Height=51.5 * mm;
-  G4double primaryColl2PosX=0.0 * mm;
-  G4double primaryColl2PosY=0.0 * mm;
-  G4double primaryColl2PosZ=( primaryCollPosZ +  primaryColl2Height ) * mm;
+  G4double primaryColl2InnerDiam = 6.5 * mm;
+  G4double primaryColl2OuterDiam = 25. * mm;
+  G4double primaryColl2Height = 51.5 * mm;
+  G4double primaryColl2PosX = 0.0 * mm;
+  G4double primaryColl2PosY = 0.0 * mm;
+  G4double primaryColl2PosZ = ( primaryCollPosZ +  primaryColl2Height ) * mm;
 
   G4Tubs* primaryColl2 = new G4Tubs("primaryColl2", primaryColl2InnerDiam/2., primaryColl2OuterDiam/2., primaryColl2Height/2., 0.0, 2.0*pi);
 
@@ -490,11 +490,11 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   //sourceAssembly.AddPlacedVolume( primaryColl2Logic, pos=(primaryColl2PosX,primaryColl2PosY,primaryColl2PosZ) )
 
-  G4double collOuterDiam=20. * mm;
-  G4double collHeight=89. * mm;
-  G4double collPosX=0.0 * mm;
-  G4double collPosY=0.0 * mm;
-  G4double collPosZ=( primaryColl2PosZ + collHeight/2. + primaryColl2Height/2. + 1.5 );
+  G4double collOuterDiam = 20. * mm;
+  G4double collHeight = 89. * mm;
+  G4double collPosX = 0.0 * mm;
+  G4double collPosY = 0.0 * mm;
+  G4double collPosZ = ( primaryColl2PosZ + collHeight/2. + primaryColl2Height/2. + 1.5 );
 
 //####Secondary collimator 4/8/14/18 mm
   G4Tubs* collbody = new G4Tubs("collbody", 0.0, collOuterDiam/2, collHeight/2, 0.0, 2.0*pi);
@@ -540,11 +540,11 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   //####Source shielding
 
-  G4double sourceShieldingInnerDiam=27.6352 * mm;
-  G4double sourceShieldingOuterDiam=107.6352 * mm;
+  G4double sourceShieldingInnerDiam = 27.6352 * mm;
+  G4double sourceShieldingOuterDiam = 107.6352 * mm;
   G4double sourceShieldingHeight=50.0126*mm + 103.*mm;
-  G4double sourceShieldingPosX=0.0 * mm;
-  G4double sourceShieldingPosY=0.0 * mm;
+  G4double sourceShieldingPosX = 0.0 * mm;
+  G4double sourceShieldingPosY = 0.0 * mm;
   G4double sourceShieldingPosZ= sourceShieldingHeight/2 - containerHeight/2;
 
   G4Tubs* sourceShielding = new G4Tubs("sourceShielding", sourceShieldingInnerDiam/2, sourceShieldingOuterDiam/2, sourceShieldingHeight/2., 0.0, 2.0*pi);
@@ -561,8 +561,8 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4double collimatorShieldingInnerDiam=20. * mm;
   G4double collimatorShieldingOuterDiam=107.6352 * mm;
   G4double collimatorShieldingHeight=89. * mm;
-  G4double collimatorShieldingPosX=0.0 * mm;
-  G4double collimatorShieldingPosY=0.0 * mm;
+  G4double collimatorShieldingPosX = 0.0 * mm;
+  G4double collimatorShieldingPosY = 0.0 * mm;
   G4double collimatorShieldingPosZ= ( primaryColl2PosZ + collHeight/2 + primaryColl2Height/2 + 1.5 );
 
   G4Tubs* collimatorShielding = new G4Tubs("collimatorShielding", collimatorShieldingInnerDiam/2, collimatorShieldingOuterDiam/2, collimatorShieldingHeight/2., 0.0, 2.0*pi);
@@ -580,8 +580,8 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4double plexiInnerDiam= 0.0 * mm;
   G4double plexiOuterDiam= 107.6352 * mm;
   G4double plexiHeight = 2.0 * mm;
-  G4double plexiPosX=0.0 * mm;
-  G4double plexiPosY=0.0 * mm;
+  G4double plexiPosX = 0.0 * mm;
+  G4double plexiPosY = 0.0 * mm;
   G4double plexiPosZ=containerHeight/2.-plexiHeight/2.0; // WARNING TO BE CORRECTED
 
   G4Tubs* plexiSolid = new G4Tubs("plexiSolid", plexiInnerDiam/2, plexiOuterDiam/2, plexiHeight/2, 0.0, 2.0*pi);
