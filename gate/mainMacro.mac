@@ -26,11 +26,11 @@
 /vis/scene/endOfEventAction         accumulate
 
 #custom
-#/vis/scene/create
-#/vis/open VRML2FILE
-#/tracking/storeTrajectory 1
-#/vis/scene/add/trajectories
-#/vis/scene/endOfEventAction accumulate
+/vis/scene/create
+/vis/open VRML2FILE
+/tracking/storeTrajectory 1
+/vis/scene/add/trajectories
+/vis/scene/endOfEventAction accumulate
 #/custom
 
 /control/execute                    Verbose.mac
@@ -234,15 +234,25 @@
 /gate/collShield/setMaterial                  SS304
 /gate/collShield/vis/setColor                 grey
 
+### PLEXIGLASS
+/gate/ionSource/daughters/name                plexi
+/gate/ionSource/daughters/insert              cylinder
+/gate/plexi/placement/setTranslation          0.0 0.0 120.7563 mm
+/gate/plexi/geometry/setRmax                  53.8176 mm
+/gate/plexi/geometry/setRmin                  0. mm
+/gate/plexi/geometry/setHeight                2. mm
+/gate/plexi/setMaterial                       Plexiglass
+/gate/plexi/vis/setColor                      white
+
 
 # ----------------------------
 # REPEAT SOURCE AND COLLIMATOR
 # ----------------------------
 
-/gate/ionSource/repeaters/insert              sphere
-/gate/ionSource/sphere/setRadius              260.5 mm
-/gate/ionSource/sphere/setPhiAngle            60 deg
-/gate/ionSource/sphere/setRepeatNumberWithPhi 6
+#/gate/ionSource/repeaters/insert              sphere
+#/gate/ionSource/sphere/setRadius              260.5 mm
+#/gate/ionSource/sphere/setPhiAngle            60 deg
+#/gate/ionSource/sphere/setRepeatNumberWithPhi 6
 #/gate/ionSource/sphere/setRepeatVector        0.0 3.2 4.0 mm
 
 
@@ -251,123 +261,11 @@
 # ----------------------------
 
 /gate/ionSource/moves/insert                  orbiting
-/gate/ionSource/orbiting/setSpeed             5 deg/s
+/gate/ionSource/orbiting/setSpeed             30 deg/s
 /gate/ionSource/orbiting/setPoint1            0 0 0 cm
 /gate/ionSource/orbiting/setPoint2            0 1 0 cm
 
 
-#	CYLINDRICAL
-/gate/world/daughters/name                    cylindricalPET
-/gate/world/daughters/insert                  cylinder
-/gate/cylindricalPET/placement/setTranslation 0.0 0.0 0.0 cm
-/gate/cylindricalPET/geometry/setRmax         52.0 cm
-/gate/cylindricalPET/geometry/setRmin         39.9 cm
-/gate/cylindricalPET/geometry/setHeight       40.2 cm
-/gate/cylindricalPET/setMaterial              Air
-/gate/cylindricalPET/vis/forceWireframe
-/gate/cylindricalPET/vis/setColor             white
-#
-/gate/cylindricalPET/vis/setVisible           0
-
-#	HEAD
-/gate/cylindricalPET/daughters/name           head
-/gate/cylindricalPET/daughters/insert         box
-/gate/head/placement/setTranslation           44.0 0.0 0.0 cm
-/gate/head/geometry/setXLength                8  cm
-/gate/head/geometry/setYLength                32 cm
-/gate/head/geometry/setZLength                40 cm
-/gate/head/setMaterial                        Air
-/gate/head/vis/setVisible                     0
-
-
-#	BLOCK
-/gate/head/daughters/name                     block
-/gate/head/daughters/insert                   box
-/gate/block/placement/setTranslation          0.0 0.0 0.0 cm
-/gate/block/geometry/setXLength               30 mm
-/gate/block/geometry/setYLength               16 mm
-/gate/block/geometry/setZLength               20 mm
-/gate/block/setMaterial                       Air
-/gate/block/vis/setVisible                    0
-#
-/gate/block/vis/setVisible                     0
-
-#	C R Y S T A L
-/gate/block/daughters/name                    crystal
-/gate/block/daughters/insert                  box
-/gate/crystal/placement/setTranslation        0.0 0.0 0.0 cm
-/gate/crystal/geometry/setXLength             30 mm
-/gate/crystal/geometry/setYLength             3.0 mm
-/gate/crystal/geometry/setZLength             3.8 mm
-/gate/crystal/setMaterial                     Air
-/gate/crystal/vis/setVisible                  0
-#
-/gate/crystal/vis/setVisible                     0
-
-
-#	LSO layer
-/gate/crystal/daughters/name                  LSO
-/gate/crystal/daughters/insert                box
-/gate/LSO/placement/setTranslation            -0.75 0.0 0.0 cm
-/gate/LSO/geometry/setXLength                 15 mm
-/gate/LSO/geometry/setYLength                 3.0 mm
-/gate/LSO/geometry/setZLength                 3.8 mm
-/gate/LSO/setMaterial                         LSO
-/gate/LSO/vis/setColor                        red
-#
-/gate/LSO/vis/setVisible                     0
-
-#	BGO layer
-/gate/crystal/daughters/name                  BGO
-/gate/crystal/daughters/insert                box
-/gate/BGO/placement/setTranslation            +0.75 0.0 0.0 cm
-/gate/BGO/geometry/setXLength                 15 mm
-/gate/BGO/geometry/setYLength                 3.0 mm
-/gate/BGO/geometry/setZLength                 3.8 mm
-/gate/BGO/setMaterial                         BGO
-/gate/BGO/vis/setColor                        yellow
-#
-/gate/BGO/vis/setVisible                     0
-
-#	R E P E A T    C R Y S T A L
-/gate/crystal/repeaters/insert                cubicArray
-/gate/crystal/cubicArray/setRepeatNumberX     1
-/gate/crystal/cubicArray/setRepeatNumberY     5
-/gate/crystal/cubicArray/setRepeatNumberZ     5
-/gate/crystal/cubicArray/setRepeatVector      0.0 3.2 4.0 mm
-
-
-#	R E P E A T    BLOCK
-/gate/block/repeaters/insert                  cubicArray
-/gate/block/cubicArray/setRepeatNumberX       1
-/gate/block/cubicArray/setRepeatNumberY       20
-/gate/block/cubicArray/setRepeatNumberZ       20
-/gate/block/cubicArray/setRepeatVector        0.0 1.6 2.0 cm
-
-
-#	R E P E A T HEAD
-/gate/head/repeaters/insert                   ring
-/gate/head/ring/setRepeatNumber               4
-
-
-#	A T T A C H    S Y S T E M
-/gate/systems/cylindricalPET/rsector/attach   head
-/gate/systems/cylindricalPET/module/attach    block
-/gate/systems/cylindricalPET/crystal/attach   crystal
-/gate/systems/cylindricalPET/layer0/attach    LSO
-/gate/systems/cylindricalPET/layer1/attach    BGO
-
-#	A T T A C H    C R Y S T A L  SD
-
-/gate/LSO/attachCrystalSD
-/gate/BGO/attachCrystalSD
-
-/gate/systems/cylindricalPET/describe
-
-/gate/cylindricalPET/moves/insert             orbiting
-/gate/cylindricalPET/orbiting/setSpeed        30 deg/s
-/gate/cylindricalPET/orbiting/setPoint1       0 0 0 cm
-/gate/cylindricalPET/orbiting/setPoint2       0 0 1 cm
 
 #=====================================================
 # VOXEL PHANTOM
@@ -408,27 +306,26 @@
 # CUTS
 #=====================================================
 
-/gate/physics/Gamma/SetCutInRegion      LSO 1.0 cm
-/gate/physics/Electron/SetCutInRegion   LSO 1.0 cm
-/gate/physics/Positron/SetCutInRegion   LSO 1.0 cm
+#/gate/physics/Gamma/SetCutInRegion      LSO 1.0 cm
+#/gate/physics/Electron/SetCutInRegion   LSO 1.0 cm
+#/gate/physics/Positron/SetCutInRegion   LSO 1.0 cm
 
-/gate/physics/Gamma/SetCutInRegion      BGO 1.0 cm
-/gate/physics/Electron/SetCutInRegion   BGO 1.0 cm
-/gate/physics/Positron/SetCutInRegion   BGO 1.0 cm
+#/gate/physics/Gamma/SetCutInRegion      BGO 1.0 cm
+#/gate/physics/Electron/SetCutInRegion   BGO 1.0 cm
+#/gate/physics/Positron/SetCutInRegion   BGO 1.0 cm
 
 
-#/gate/physics/Gamma/SetCutInRegion      hof_brain 0.1 mm
-#/gate/physics/Electron/SetCutInRegion   hof_brain 0.1 mm
-#/gate/physics/Positron/SetCutInRegion   hof_brain 0.1 mm
+##/gate/physics/Gamma/SetCutInRegion      hof_brain 0.1 mm
+##/gate/physics/Electron/SetCutInRegion   hof_brain 0.1 mm
+##/gate/physics/Positron/SetCutInRegion   hof_brain 0.1 mm
 
-#/gate/physics/SetMaxStepSizeInRegion    hof_brain 0.01 mm
+##/gate/physics/SetMaxStepSizeInRegion    hof_brain 0.01 mm
 
 #=====================================================
 # INITIALISATION
 #=====================================================
 
 /gate/run/initialize
-
 
 #=====================================================
 # Show how the geometry moves with time
@@ -437,62 +334,40 @@
 /control/execute                        MoveVisu.mac
 
 #=====================================================
-#   D I G I T I Z E R: DETECTOR ELECTRONIC RESPONSE
-#=====================================================
-
-/gate/digitizer/Singles/insert                        adder
-/gate/digitizer/Singles/insert                        readout
-/gate/digitizer/Singles/readout/setDepth              1
-
-/gate/digitizer/Singles/insert                        blurring
-/gate/digitizer/Singles/blurring/setResolution        0.26
-/gate/digitizer/Singles/blurring/setEnergyOfReference 511. keV
-
-/gate/digitizer/Singles/insert                        thresholder
-/gate/digitizer/Singles/thresholder/setThreshold      350. keV
-/gate/digitizer/Singles/insert                        upholder
-/gate/digitizer/Singles/upholder/setUphold            650. keV
-
-
-
-#=====================================================
-#	C O I N C I D E N C E    S O R T E R
-#=====================================================
-
-/gate/digitizer/Coincidences/setWindow          10. ns
-
-/gate/digitizer/name                            delay
-/gate/digitizer/insert                          coincidenceSorter
-/gate/digitizer/delay/setWindow                 10. ns
-/gate/digitizer/delay/setOffset                 500. ns
-
-#=====================================================
 #  VOXELIZED SOURCE
 #=====================================================
 
-/control/execute VoxelizedSource.mac
+#/control/execute VoxelizedSource.mac
+
+#=====================================================
+#  COBALT SOURCE
+#=====================================================
+
+/control/execute CobaltSource.mac
+
+#=====================================================
+#  DETECTORS
+#=====================================================
+
+/gate/actor/addActor                     PhaseSpaceActor PhsSrc
+/gate/actor/PhsSrc/attachTo              plexi
+#/gate/actor/PhsSrc/storeOutgoingParticles true
+/gate/actor/PhsSrc/useVolumeFrame        true
 
 #=====================================================
 #  DATA OUTPUT
 #=====================================================
 
 /gate/output/root/enable
-/gate/output/root/setFileName             YourFile
-/gate/output/root/setRootHitFlag          0
-/gate/output/root/setRootSinglesFlag      1
-/gate/output/root/setRootCoincidencesFlag 1
-/gate/output/root/setRootdelayFlag        1
-/gate/output/root/setRootNtupleFlag       0
-
-
+/gate/output/root/setFileName             PhaseSpace
 
 #=====================================================
 #   MEASUREMENT SETTINGS
 #=====================================================
 
-/gate/application/setTimeSlice   100 ms
-/gate/application/setTimeStart   0   ms
-/gate/application/setTimeStop    100 ms
+/gate/application/setTimeSlice   1.   s
+/gate/application/setTimeStart   0.   s
+/gate/application/setTimeStop    60.  s
 
 /gate/application/startDAQ
 
