@@ -19,3 +19,4 @@ bin/*
 !bin/run.py
 
 RunBeam
+openPBS.script

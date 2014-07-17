@@ -33,278 +33,34 @@
 /vis/scene/endOfEventAction accumulate
 #/custom
 
-/control/execute                    Verbose.mac
+/control/execute                    mac/Verbose.mac
 
 
 #=====================================================
 # GEOMETRY
 #=====================================================
 
-
-
-/gate/geometry/setMaterialDatabase    /home/g4vm/Programs/gate/gate_v7.0/GateMaterials.db
-
-#
-#     W O R L D
-#
-/gate/world/geometry/setXLength       200. cm
-/gate/world/geometry/setYLength       200. cm
-/gate/world/geometry/setZLength       200. cm
-#/gate/world/geometry/setXLength       400. mm
-#/gate/world/geometry/setYLength       400. mm
-#/gate/world/geometry/setZLength       400. mm
-
-
-#-------------------oooooOOOOO00000OOOOOooooo---------------------#
-#                                                                 #
-#     D E F I N I T I O N   A N D   D E S C R I P T I O N         #
-#           O F   G A M M A K N I F E   D E V I C E               #
-#                                                                 #
-#-------------------oooooOOOOO00000OOOOOooooo---------------------#
-
-# ----------------------------
-# COBALT SOURCE AND COLLIMATOR
-# ----------------------------
-
-# CONTAINER
-/gate/world/daughters/name                    ionSource
-/gate/world/daughters/insert                  cylinder
-/gate/ionSource/placement/setTranslation      0.0 0.0 0.0 mm
-/gate/ionSource/geometry/setRmax              53.8176 mm
-/gate/ionSource/geometry/setRmin              0.0 mm
-/gate/ionSource/geometry/setHeight            243.5126 mm
-/gate/ionSource/setMaterial                   Air
-/gate/ionSource/vis/forceWireframe
-/gate/ionSource/vis/setColor                  yellow
-/gate/ionSource/placement/setRotationAxis     1 0 0
-/gate/ionSource/placement/setRotationAngle    90 deg
-
-### TUBE DEFINITIONS
-
-# OUTER TUBE
-/gate/ionSource/daughters/name                largestTube
-/gate/ionSource/daughters/insert              cylinder
-/gate/largestTube/placement/setTranslation    0.0 0.0 -96.75 mm
-/gate/largestTube/geometry/setRmax            13.81755 mm
-/gate/largestTube/geometry/setRmin            6.0706 mm
-/gate/largestTube/geometry/setHeight          50.0126 mm
-/gate/largestTube/setMaterial                 SS304
-/gate/largestTube/vis/setColor                red
-
-# MIDDLE TUBE
-/gate/largestTube/daughters/name              middleTube
-/gate/largestTube/daughters/insert            cylinder
-/gate/middleTube/placement/setTranslation     0.0 0.0 5.4288 mm
-/gate/middleTube/geometry/setRmax             5.8039 mm
-/gate/middleTube/geometry/setRmin             3.556 mm
-/gate/middleTube/geometry/setHeight           36.4236 mm
-/gate/middleTube/setMaterial                  SS304
-/gate/middleTube/vis/setColor                 blue
-
-# INNER TUBE
-/gate/middleTube/daughters/name               innerTube
-/gate/middleTube/daughters/insert             cylinder
-#(36.4236-32.9438)/2 - .4064
-/gate/innerTube/placement/setTranslation      0.0 0.0 1.3335 mm
-/gate/innerTube/geometry/setRmax              3.302 mm
-/gate/innerTube/geometry/setRmin              1.2954 mm
-/gate/innerTube/geometry/setHeight            32.9438 mm
-/gate/innerTube/setMaterial                   SS304
-/gate/innerTube/vis/setColor                  green
-
-### CAP DEFINITIONS
-
-# OUTER CONTAINER CAP
-/gate/largestTube/daughters/name              largestCap
-/gate/largestTube/daughters/insert            cylinder
-/gate/largestCap/placement/setTranslation     0.0 0.0 24.2951 mm
-/gate/largestCap/geometry/setRmax             5.8039 mm
-/gate/largestCap/geometry/setRmin             4. mm
-/gate/largestCap/geometry/setHeight           1.4244 mm
-/gate/largestCap/setMaterial                  SS304
-/gate/largestCap/vis/setColor                 white
-
-# MIDDLE CONTAINER CAP
-/gate/largestTube/daughters/name              middleCap
-/gate/largestTube/daughters/insert            cylinder
-/gate/middleCap/placement/setTranslation      0.0 0.0 23.3807 mm
-/gate/middleCap/geometry/setRmax              3.302 mm
-/gate/middleCap/geometry/setRmin              0. mm
-/gate/middleCap/geometry/setHeight            0.4064 mm
-/gate/middleCap/setMaterial                   SS304
-/gate/middleCap/vis/setColor                  magenta
-
-## STILL NEEDS CONE SUBTRACTED
-# INNER CONTAINER CAP
-/gate/innerTube/daughters/name                innerCap
-/gate/innerTube/daughters/insert              cylinder
-#/gate/innerCap/placement/setTranslation       0.0 0.0 23.3807 mm
-/gate/innerCap/placement/setTranslation       0.0 0.0 16.1294 mm
-/gate/innerCap/geometry/setRmax               1.2954 mm
-/gate/innerCap/geometry/setRmin               0. mm
-/gate/innerCap/geometry/setHeight             0.685 mm
-/gate/innerCap/setMaterial                    SS304
-/gate/innerCap/vis/setColor                   cyan
-
-# OUTER CONTAINER BACK CAP
-/gate/largestTube/daughters/name              largestBackCap
-/gate/largestTube/daughters/insert            cylinder
-/gate/largestBackCap/placement/setTranslation 0.0 0.0 -23.876 mm
-/gate/largestBackCap/geometry/setRmax         5.8039 mm
-/gate/largestBackCap/geometry/setRmin         0. mm
-/gate/largestBackCap/geometry/setHeight       2.2606 mm
-/gate/largestBackCap/setMaterial              SS304
-/gate/largestBackCap/vis/setColor             yellow
-
-# MIDDLE CONTAINER BACK CAP
-/gate/middleTube/daughters/name               middleBackCap
-/gate/middleTube/daughters/insert             cylinder
-/gate/middleBackCap/placement/setTranslation  0.0 0.0 -17.1831 mm
-/gate/middleBackCap/geometry/setRmax          3.302 mm
-/gate/middleBackCap/geometry/setRmin          0. mm
-/gate/middleBackCap/geometry/setHeight        2.0574 mm
-/gate/middleBackCap/setMaterial               SS304
-/gate/middleBackCap/vis/setColor              green
-
-# INNER CONTAINER BACK CAP
-/gate/innerTube/daughters/name                innerBackCap
-/gate/innerTube/daughters/insert              cylinder
-/gate/innerBackCap/placement/setTranslation   0.0 0.0 -15.4719 mm
-/gate/innerBackCap/geometry/setRmax           1.2954 mm
-/gate/innerBackCap/geometry/setRmin           0. mm
-/gate/innerBackCap/geometry/setHeight         2. mm
-/gate/innerBackCap/setMaterial                SS304
-/gate/innerBackCap/vis/setColor               white
-
-## !! STILL NEED COBALT FILLING & TUNGSTEN PLUG !!
-
-### COLLIMATOR DEFINITIONS
-
-# PRIMARY COLLIMATOR 1
-/gate/ionSource/daughters/name                primaryColl
-/gate/ionSource/daughters/insert              cylinder
-/gate/primaryColl/placement/setTranslation    0.0 0.0 -45.9937 mm
-/gate/primaryColl/geometry/setRmax            12.5 mm
-/gate/primaryColl/geometry/setRmin            3.25 mm
-/gate/primaryColl/geometry/setHeight          51.5 mm
-/gate/primaryColl/setMaterial                 Tungsten
-/gate/primaryColl/vis/setColor                red
-
-# PRIMARY COLLIMATOR 2
-/gate/ionSource/daughters/name                primaryColl2
-/gate/ionSource/daughters/insert              cylinder
-/gate/primaryColl2/placement/setTranslation   0.0 0.0 5.5063 mm
-/gate/primaryColl2/geometry/setRmax           12.5 mm
-/gate/primaryColl2/geometry/setRmin           3.25 mm
-/gate/primaryColl2/geometry/setHeight         51.5 mm
-/gate/primaryColl2/setMaterial                Tungsten
-/gate/primaryColl2/vis/setColor               blue
-
-# SECONDARY COLLIMATOR (4mm)
-/gate/ionSource/daughters/name                coll
-/gate/ionSource/daughters/insert              cylinder
-/gate/coll/placement/setTranslation           0.0 0.0 77.2563 mm
-/gate/coll/geometry/setRmax                   10. mm
-/gate/coll/geometry/setRmin                   1.3 mm
-/gate/coll/geometry/setHeight                 89. mm
-/gate/coll/setMaterial                        Tungsten
-/gate/coll/vis/setColor                       magenta
-
-## !! STILL NEED 8/14/18 mm COLLIMATORS W/ BOOLEAN SOLIDS !!
-
-### SHIELDING DEFINITIONS
-
-# SOURCE SHIELDING
-/gate/ionSource/daughters/name                sourceShield
-/gate/ionSource/daughters/insert              cylinder
-/gate/sourceShield/placement/setTranslation   0.0 0.0 -45.25 mm
-/gate/sourceShield/geometry/setRmax           53.8176 mm
-/gate/sourceShield/geometry/setRmin           13.8176 mm
-/gate/sourceShield/geometry/setHeight         153.0126 mm
-/gate/sourceShield/setMaterial                SS304
-/gate/sourceShield/vis/setColor               cyan
-
-# COLLIMATOR SHIELDING
-/gate/ionSource/daughters/name                collShield
-/gate/ionSource/daughters/insert              cylinder
-/gate/collShield/placement/setTranslation     0.0 0.0 77.2563 mm
-/gate/collShield/geometry/setRmax             53.8176 mm
-/gate/collShield/geometry/setRmin             10. mm
-/gate/collShield/geometry/setHeight           89. mm
-/gate/collShield/setMaterial                  SS304
-/gate/collShield/vis/setColor                 grey
-
-### PLEXIGLASS
-/gate/ionSource/daughters/name                plexi
-/gate/ionSource/daughters/insert              cylinder
-/gate/plexi/placement/setTranslation          0.0 0.0 120.7563 mm
-/gate/plexi/geometry/setRmax                  53.8176 mm
-/gate/plexi/geometry/setRmin                  0. mm
-/gate/plexi/geometry/setHeight                2. mm
-/gate/plexi/setMaterial                       Plexiglass
-/gate/plexi/vis/setColor                      white
-
-
-# ----------------------------
-# REPEAT SOURCE AND COLLIMATOR
-# ----------------------------
-
-#/gate/ionSource/repeaters/insert              sphere
-#/gate/ionSource/sphere/setRadius              260.5 mm
-#/gate/ionSource/sphere/setPhiAngle            60 deg
-#/gate/ionSource/sphere/setRepeatNumberWithPhi 6
-#/gate/ionSource/sphere/setRepeatVector        0.0 3.2 4.0 mm
-
-
-# ----------------------------
-# MOVEMENT OF SOURCE OVER TIME
-# ----------------------------
-
-/gate/ionSource/moves/insert                  orbiting
-/gate/ionSource/orbiting/setSpeed             30 deg/s
-/gate/ionSource/orbiting/setPoint1            0 0 0 cm
-/gate/ionSource/orbiting/setPoint2            0 1 0 cm
-
-
+/control/execute mac/DeviceGeometry.mac
 
 #=====================================================
 # VOXEL PHANTOM
 #=====================================================
 
-#/control/execute VoxelizedPhantom.mac
+#/control/execute mac/VoxelizedPhantom.mac
 
 #=====================================================
 # PHYSICS
 #=====================================================
 
-/gate/physics/addProcess PhotoElectric
-/gate/physics/processes/PhotoElectric/setModel StandardModel
-
-/gate/physics/addProcess Compton
-/gate/physics/processes/Compton/setModel StandardModel
-
-/gate/physics/addProcess RayleighScattering
-/gate/physics/processes/RayleighScattering/setModel PenelopeModel
-
-/gate/physics/addProcess ElectronIonisation
-/gate/physics/processes/ElectronIonisation/setModel StandardModel e-
-/gate/physics/processes/ElectronIonisation/setModel StandardModel e+
-
-/gate/physics/addProcess Bremsstrahlung
-/gate/physics/processes/Bremsstrahlung/setModel StandardModel e-
-/gate/physics/processes/Bremsstrahlung/setModel StandardModel e+
-
-/gate/physics/addProcess PositronAnnihilation
-
-/gate/physics/addProcess MultipleScattering e+
-/gate/physics/addProcess MultipleScattering e-
-
-/gate/physics/processList Enabled
-/gate/physics/processList Initialized
+/control/execute mac/Physics.mac
 
 #=====================================================
 # CUTS
 #=====================================================
+
+/gate/physics/Gamma/SetCutInRegion       world 0.1 um
+/gate/physics/Electron/SetCutInRegion    world 0.1 um
+/gate/physics/Positron/SetCutInRegion    world 0.1 um
 
 #/gate/physics/Gamma/SetCutInRegion      LSO 1.0 cm
 #/gate/physics/Electron/SetCutInRegion   LSO 1.0 cm
@@ -322,7 +78,17 @@
 ##/gate/physics/SetMaxStepSizeInRegion    hof_brain 0.01 mm
 
 #=====================================================
-# INITIALISATION
+#  DETECTORS
+#=====================================================
+
+/gate/actor/addActor                        PhaseSpaceActor PhsSrc
+/gate/actor/PhsSrc/save                     output/PhaseSpace.root
+/gate/actor/PhsSrc/attachTo                 world
+#/gate/actor/PhsSrc/storeOutgoingParticles  true
+/gate/actor/PhsSrc/useVolumeFrame           true
+
+#=====================================================
+# INITIALIZATION
 #=====================================================
 
 /gate/run/initialize
@@ -331,35 +97,13 @@
 # Show how the geometry moves with time
 #=====================================================
 
-/control/execute                        MoveVisu.mac
-
-#=====================================================
-#  VOXELIZED SOURCE
-#=====================================================
-
-#/control/execute VoxelizedSource.mac
+/control/execute                        mac/MoveVisu.mac
 
 #=====================================================
 #  COBALT SOURCE
 #=====================================================
 
-/control/execute CobaltSource.mac
-
-#=====================================================
-#  DETECTORS
-#=====================================================
-
-/gate/actor/addActor                     PhaseSpaceActor PhsSrc
-/gate/actor/PhsSrc/attachTo              plexi
-#/gate/actor/PhsSrc/storeOutgoingParticles true
-/gate/actor/PhsSrc/useVolumeFrame        true
-
-#=====================================================
-#  DATA OUTPUT
-#=====================================================
-
-/gate/output/root/enable
-/gate/output/root/setFileName             PhaseSpace
+/control/execute mac/CobaltSource.mac
 
 #=====================================================
 #   MEASUREMENT SETTINGS
@@ -367,7 +111,7 @@
 
 /gate/application/setTimeSlice   1.   s
 /gate/application/setTimeStart   0.   s
-/gate/application/setTimeStop    60.  s
+/gate/application/setTimeStop    4.   s
 
 /gate/application/startDAQ
 
