@@ -33,7 +33,7 @@
 /vis/scene/endOfEventAction accumulate
 #/custom
 
-/control/execute  mac/Verbose.mac
+/control/execute mac/Verbose.mac
 
 
 #=====================================================
@@ -81,11 +81,23 @@
 #  DETECTORS
 #=====================================================
 
+## Generate phasespace
+
 /gate/actor/addActor                        PhaseSpaceActor PhsSrc
 /gate/actor/PhsSrc/save                     output/PhaseSpace.root
-/gate/actor/PhsSrc/attachTo                 world
-#/gate/actor/PhsSrc/storeOutgoingParticles  true
+/gate/actor/PhsSrc/attachTo                 ionSource
+/gate/actor/PhsSrc/storeOutgoingParticles  true
 /gate/actor/PhsSrc/useVolumeFrame           true
+
+## Kill particles
+
+/gate/actor/addActor 						KillActor PKill
+/gate/actor/PKill/save      				output/KilledParticles.txt
+/gate/actor/PKill/attachTo 					world
+/gate/actor/PKill/addFilter 				particleFilter
+/gate/actor/PKill/particleFilter/addParticle anti_nu_e
+/gate/actor/PKill/particleFilter/addParticle nu_e
+/gate/actor/PKill/particleFilter/addParticle Ni60
 
 #=====================================================
 # INITIALIZATION
@@ -114,4 +126,3 @@
 /gate/application/setTimeStop    4.   s
 
 /gate/application/startDAQ
-
