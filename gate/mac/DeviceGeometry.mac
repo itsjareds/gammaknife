@@ -215,7 +215,7 @@
 # MOVEMENT OF SOURCE OVER TIME
 # ----------------------------
 
-/gate/ionSource/moves/insert                  orbiting
-/gate/ionSource/orbiting/setSpeed             30 deg/s
-/gate/ionSource/orbiting/setPoint1            0 0 0 cm
-/gate/ionSource/orbiting/setPoint2            0 1 0 cm
+#/gate/ionSource/moves/insert                  orbiting
+#/gate/ionSource/orbiting/setSpeed             30 deg/s
+#/gate/ionSource/orbiting/setPoint1            0 0 0 cm
+#/gate/ionSource/orbiting/setPoint2            0 1 0 cm

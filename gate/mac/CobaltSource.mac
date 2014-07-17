@@ -1,12 +1,14 @@
 /gate/source/addSource                      cobalt gps
 
-/gate/source/cobalt/setActivity             7400000000000. becquerel
+#/gate/source/cobalt/setActivity             7400000000000. becquerel
 
 ## Simulate ion decay (more accurate, slower)
 /gate/source/cobalt/gps/particle            ion
 /gate/source/cobalt/gps/ion                 27 60 0 0
 /gate/source/cobalt/setForcedUnstableFlag   true
-/gate/source/cobalt/useDefaultHalfLife
+/gate/source/cobalt/setForcedHalfLife		1 ns
+/gate/source/cobalt/gps/ene/type            Mono
+/gate/source/cobalt/gps/ene/mono            0. MeV
 /gate/source/cobalt/gps/ang/type            iso
 /gate/source/cobalt/gps/ang/mintheta        0. deg
 /gate/source/cobalt/gps/ang/minphi          0. deg
