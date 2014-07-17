@@ -33,7 +33,7 @@
 /vis/scene/endOfEventAction accumulate
 #/custom
 
-/control/execute                    mac/Verbose.mac
+/control/execute  mac/Verbose.mac
 
 
 #=====================================================
@@ -97,7 +97,7 @@
 # Show how the geometry moves with time
 #=====================================================
 
-/control/execute                        mac/MoveVisu.mac
+/control/execute mac/MoveVisu.mac
 
 #=====================================================
 #  COBALT SOURCE
