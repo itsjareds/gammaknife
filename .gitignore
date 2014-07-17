@@ -20,3 +20,4 @@ bin/*
 
 RunBeam
 openPBS.script
+gate/output
