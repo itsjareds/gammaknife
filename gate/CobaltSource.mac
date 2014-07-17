@@ -1,0 +1,33 @@
+/gate/source/addSource                     cobalt gps
+
+/gate/source/cobalt/setActivity            7400000000000. becquerel
+
+## Simulate ion decay (more accurate, slower)
+/gate/source/cobalt/gps/particle           ion
+/gate/source/cobalt/gps/ion                27 60 0 0
+/gate/source/cobalt/setForcedUnstableFlag  true
+/gate/source/cobalt/useDefaultHalfLife
+
+## Spawn gamma rays (less accurate, faster)
+#/gate/source/cobalt/gps/particle           gamma
+#/gate/source/cobalt/gps/energytype         Mono
+#/gate/source/cobalt/gps/monoenergy         1.25 MeV
+#/gate/source/cobalt/gps/ang/type           iso
+#/gate/source/cobalt/gps/ang/mintheta       0. deg
+#/gate/source/cobalt/gps/ang/minphi         0. deg
+#/gate/source/cobalt/gps/ang/maxphi         360. deg
+
+/gate/source/cobalt/setForcedUnstableFlag  true
+/gate/source/cobalt/setForcedHalfLife      1 ns
+
+/gate/source/cobalt/attachTo               innerTube
+/gate/source/cobalt/gps/position           0 0 0 mm
+
+/gate/source/cobalt/gps/type               Volume
+/gate/source/cobalt/gps/shape              Cylinder
+/gate/source/cobalt/gps/radius0            0. mm
+/gate/source/cobalt/gps/radius             1.2954 mm
+/gate/source/cobalt/gps/halfz              16.4719 mm
+#/gate/source/cobalt/visualize              100 yellow 1
+
+/gate/source/list
