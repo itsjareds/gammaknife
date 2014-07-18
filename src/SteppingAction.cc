@@ -51,7 +51,6 @@ void SteppingAction::UserSteppingAction(const G4Step* aStep) {
           gen->dx= mom[0] / gen->E;
           gen->dy= mom[1] / gen->E;
           gen->dz= mom[2] / gen->E;
-
         }
         tr->SetTrackStatus(fStopAndKill);
       }
