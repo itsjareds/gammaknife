@@ -5,7 +5,7 @@
 
 # Don't forget to make appropriate changes to time slices in mainMacro.mac!
 
-# t is the total time of rotation
+# t is the total time of rotation (seconds)
 # n is the number of time splits
 
 t = 60.
