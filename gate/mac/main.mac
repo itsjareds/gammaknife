@@ -63,7 +63,7 @@
 /gate/physics/Positron/SetCutInRegion    world 0.1 um
 
 #=====================================================
-#  DETECTORS
+#  ACTORS
 #=====================================================
 
 ## Generate phasespace
@@ -82,7 +82,11 @@
 /gate/actor/PKill/addFilter                 particleFilter
 /gate/actor/PKill/particleFilter/addParticle anti_nu_e
 /gate/actor/PKill/particleFilter/addParticle nu_e
-/gate/actor/PKill/particleFilter/addParticle Ni60
+/gate/actor/PKill/particleFilter/addParticle Ni60[2505.766]
+
+/gate/actor/addActor SecondaryProductionActor SecondaryDetector
+/gate/actor/SecondaryDetector/save          output/CobaltSource.root
+/gate/actor/SecondaryDetector/attachTo      ionSource
 
 #=====================================================
 # INITIALIZATION
@@ -108,7 +112,7 @@
 
 /gate/application/setTimeSlice   1.   s
 /gate/application/setTimeStart   0.   s
-/gate/application/setTimeStop    5000.   s
+/gate/application/setTimeStop    1.   s
 
 /gate/application/setTotalNumberOfPrimaries 100
 

@@ -22,6 +22,10 @@
 /gate/physics/processes/Bremsstrahlung/setModel StandardModel e-
 #/gate/physics/processes/Bremsstrahlung/setModel StandardModel e+
 
+### Radioactive decay
+
+/gate/physics/addProcess RadioactiveDecay
+
 ### Possibly unneeded?
 
 #/gate/physics/addProcess RayleighScattering
