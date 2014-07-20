@@ -70,7 +70,7 @@
 
 /gate/actor/addActor                        PhaseSpaceActor PhsSrc
 /gate/actor/PhsSrc/save                     output/PhaseSpace.root
-/gate/actor/PhsSrc/attachTo                 ionSource
+/gate/actor/PhsSrc/attachTo                 plexi
 /gate/actor/PhsSrc/storeOutgoingParticles   true
 /gate/actor/PhsSrc/useVolumeFrame           true
 

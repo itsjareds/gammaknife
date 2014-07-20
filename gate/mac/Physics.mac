@@ -1,6 +1,6 @@
 ### Photon
 
-/gate/physics/addProcess PhotoElectric
+/gate/physics/addProcess PhotoElectric gamma
 /gate/physics/processes/PhotoElectric/setModel StandardModel
 
 /gate/physics/addProcess Compton

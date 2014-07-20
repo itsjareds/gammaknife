@@ -6,7 +6,8 @@
 /gate/source/cobalt/gps/particle            ion
 /gate/source/cobalt/gps/ion                 27 60 0 0
 /gate/source/cobalt/setForcedUnstableFlag   true
-/gate/source/cobalt/setForcedHalfLife		1. s
+#/gate/source/cobalt/setForcedHalfLife      1. s
+/gate/source/cobalt/useDefaultHalfLife
 /gate/source/cobalt/gps/ene/type            Mono
 /gate/source/cobalt/gps/ene/mono            0. MeV
 /gate/source/cobalt/gps/ang/type            iso
