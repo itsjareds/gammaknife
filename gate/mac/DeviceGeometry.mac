@@ -155,17 +155,11 @@
 /gate/primaryColl2/setMaterial                Tungsten
 /gate/primaryColl2/vis/setColor               blue
 
-# SECONDARY COLLIMATOR (4mm)
-/gate/ionSource/daughters/name                coll
-/gate/ionSource/daughters/insert              cylinder
-/gate/coll/placement/setTranslation           0.0 0.0 77.2563 mm
-/gate/coll/geometry/setRmax                   10. mm
-/gate/coll/geometry/setRmin                   1.3 mm
-/gate/coll/geometry/setHeight                 89. mm
-/gate/coll/setMaterial                        Tungsten
-/gate/coll/vis/setColor                       magenta
-
-## !! STILL NEED 8/14/18 mm COLLIMATORS W/ BOOLEAN SOLIDS !!
+# SECONDARY COLLIMATOR
+#/control/execute mac/coll4mm.mac
+#/control/execute mac/coll8mm.mac
+#/control/execute mac/coll14mm.mac
+/control/execute mac/coll18mm.mac
 
 ### SHIELDING DEFINITIONS
 

@@ -1,0 +1,21 @@
+# SECONDARY COLLIMATOR (14mm)
+/gate/ionSource/daughters/name                coll
+/gate/ionSource/daughters/insert              cylinder
+/gate/coll/placement/setTranslation           0.0 0.0 77.2563 mm
+/gate/coll/geometry/setRmax                   10. mm
+/gate/coll/geometry/setRmin                   0. mm
+/gate/coll/geometry/setHeight                 89. mm
+/gate/coll/setMaterial                        Tungsten
+/gate/coll/vis/setColor                       magenta
+
+# Replicate a cone being hollowed out of the cylinder
+/gate/coll/daughters/name                     coneRemoved
+/gate/coll/daughters/insert                   cone
+/gate/coneRemoved/placement/setTranslation    0.0 0.0 0.0 mm
+/gate/coneRemoved/geometry/setRmax1           2.5 mm
+/gate/coneRemoved/geometry/setRmin1           0. mm
+/gate/coneRemoved/geometry/setRmax2           3.925 mm
+/gate/coneRemoved/geometry/setRmin2           0. mm
+/gate/coneRemoved/geometry/setHeight          89. mm
+/gate/coneRemoved/setMaterial                 Air
+/gate/coneRemoved/vis/setColor                magenta
