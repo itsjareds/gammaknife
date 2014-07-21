@@ -105,9 +105,9 @@ void PhysicsList::ConstructProcess()
   //
   G4UAtomicDeexcitation* de = new G4UAtomicDeexcitation();
   de->SetFluo(true);
-  de->SetAuger(true);   
-  de->SetPIXE(false);  
-  G4LossTableManager::Instance()->SetAtomDeexcitation(de);  
+  de->SetAuger(true);
+  de->SetPIXE(false);
+  G4LossTableManager::Instance()->SetAtomDeexcitation(de);
 
 	raddecayList->ConstructProcess();
 
@@ -151,7 +151,7 @@ void PhysicsList::ConstructEM()
       // Ionisation
       G4eIonisation* eIonisation = new G4eIonisation();
       eIonisation->SetEmModel(new G4LivermoreIonisationModel());
-      eIonisation->SetStepFunction(0.2,100*um); //improved precision in tracking  
+      eIonisation->SetStepFunction(0.2,100*um); //improved precision in tracking
       pmanager->AddProcess(eIonisation,-1,2,2);
 
       // Bremsstrahlung
@@ -175,7 +175,7 @@ void PhysicsList::ConstructEM()
       ph->RegisterProcess(new G4hPairProduction,     particle);
             }
         }
-        
+
   G4EmProcessOptions emOptions;
   emOptions.SetFluo(true);
   emOptions.SetAuger(true);
@@ -186,7 +186,7 @@ void PhysicsList::ConstructEM()
   de->SetAuger(true);
   de->SetPIXE(true);
   G4LossTableManager::Instance()->SetAtomDeexcitation(de);
-        
+
     }
 
 void PhysicsList::SetCuts()
