@@ -15,15 +15,15 @@
 # VISUALISATION
 #=====================================================
 
-#/vis/disable
+/vis/disable
 
-/vis/open                           OGLSX
-/vis/viewer/set/viewpointThetaPhi   60 60
-/vis/viewer/zoom                    6.0
-/vis/drawVolume
-/tracking/storeTrajectory           1
-/vis/scene/add/trajectories
-/vis/scene/endOfEventAction         accumulate
+#/vis/open                           OGLSX
+#/vis/viewer/set/viewpointThetaPhi   60 60
+#/vis/viewer/zoom                    6.0
+#/vis/drawVolume
+#/tracking/storeTrajectory           1
+#/vis/scene/add/trajectories
+#/vis/scene/endOfEventAction         accumulate
 
 #custom
 /vis/scene/create
@@ -82,7 +82,9 @@
 /gate/actor/PKill/addFilter                 particleFilter
 /gate/actor/PKill/particleFilter/addParticle anti_nu_e
 /gate/actor/PKill/particleFilter/addParticle nu_e
-/gate/actor/PKill/particleFilter/addParticle Ni60[2505.766]
+#/gate/actor/PKill/particleFilter/addParticle Ni60[2505.766]
+
+## Secondary particles
 
 /gate/actor/addActor SecondaryProductionActor SecondaryDetector
 /gate/actor/SecondaryDetector/save          output/CobaltSource.root
@@ -114,6 +116,6 @@
 /gate/application/setTimeStart   0.   s
 /gate/application/setTimeStop    1.   s
 
-/gate/application/setTotalNumberOfPrimaries 100
+/gate/application/setTotalNumberOfPrimaries 1
 
 /gate/application/startDAQ
