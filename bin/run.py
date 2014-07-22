@@ -38,11 +38,7 @@ class Run(Thread):
       elif os.path.isfile('../RunBeam'):
         cmd = '../RunBeam %d %d' % (A['THREAD'],A['SEED'])
       else:
-<<<<<<< HEAD
         print ' Fatal: No RunBeam binary found. '
-=======
-        print ' Fatal: No RunBeam binary found.'
->>>>>>> 36ca5d73fa97e1b7bf8ed961f061e00298501fde
         sys.exit(1)
       print cmd
       self.P = sp.Popen(cmd, shell=True,stdout=sp.PIPE, stderr=sp.PIPE)

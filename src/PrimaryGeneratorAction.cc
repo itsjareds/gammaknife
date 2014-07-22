@@ -25,6 +25,9 @@ G4double PrimaryGeneratorAction::GetEmissionEnergy() {
 G4ThreeVector PrimaryGeneratorAction::GetEmissionPosition() {
 
   G4ThreeVector v;
+  v[0] = 0.0;
+  v[1] = 0.0;
+  v[2] = 0.0;
   //G4double radius = 2.5908/2. * mm;
   G4double radius = 1.2954 * mm;
   G4double length = 30.2588 * mm;
@@ -141,22 +144,25 @@ PrimaryGeneratorAction::PrimaryGeneratorAction(G4int _thread) {
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent) {
 
 #ifdef PHASESPACE
-  /*
-if ( particleGun->GetParticleDefinition()==G4Geantino::Geantino() ) {
-G4int Z = 27, A = 60;
-G4double excitEnergy = 0.*keV;
-G4double ionCharge = 0.*eplus;
-G4ParticleDefinition* ion = G4ParticleTable::GetParticleTable()->GetIon(Z,A,excitEnergy);
-//G4ParticleDefinition* ion = G4IonTable::FindIon(Z,A,excitEnergy);
 
-particleGun->SetParticleDefinition(ion);
-particleGun->SetParticleCharge(ionCharge);
+  if ( particleGun->GetParticleDefinition()==G4Geantino::Geantino() ) {
+    G4int Z = 27, A = 60;
+    G4double excitEnergy = 0.*keV;
+    G4double ionCharge = 0.*eplus;
+    G4ParticleDefinition* ion = G4ParticleTable::GetParticleTable()->GetIon(Z,A,excitEnergy);
+    //G4ParticleDefinition* ion = G4IonTable::FindIon(Z,A,excitEnergy);
+
+    particleGun->SetParticleDefinition(ion);
+    particleGun->SetParticleCharge(ionCharge);
   }
-*/
-  particleGun->SetParticleEnergy( GetEmissionEnergy() );
-  particleGun->SetParticleDefinition(gamma);
-  particleGun->SetParticlePosition( GetEmissionPosition());
+  particleGun->SetParticlePosition( GetEmissionPosition() );
   particleGun->SetParticleMomentumDirection(GetEmissionDirection());
+  /*
+    particleGun->SetParticleEnergy( GetEmissionEnergy() );
+    particleGun->SetParticleDefinition(gamma);
+    particleGun->SetParticlePosition( GetEmissionPosition());
+    particleGun->SetParticleMomentumDirection(GetEmissionDirection());
+  */
 
 #else
 

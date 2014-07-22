@@ -15,7 +15,7 @@
 # VISUALISATION
 #=====================================================
 
-/vis/disable
+#/vis/disable
 
 #/vis/open                           OGLSX
 #/vis/viewer/set/viewpointThetaPhi   60 60
@@ -26,11 +26,11 @@
 #/vis/scene/endOfEventAction         accumulate
 
 #custom
-/vis/scene/create
-/vis/open VRML2FILE
-/tracking/storeTrajectory 1
-/vis/scene/add/trajectories
-/vis/scene/endOfEventAction accumulate
+#/vis/scene/create
+#/vis/open VRML2FILE
+#/tracking/storeTrajectory 1
+#/vis/scene/add/trajectories
+#/vis/scene/endOfEventAction accumulate
 #/custom
 
 /control/execute mac/Verbose.mac

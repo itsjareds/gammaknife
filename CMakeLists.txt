@@ -15,19 +15,19 @@ if(WITH_GEANT4_UIVIS)
 else()
   find_package(Geant4 REQUIRED)
 endif()
-
+# Load some basic macros which are needed later on
+include(FindROOT.cmake)
 #----------------------------------------------------------------------------
 # Setup Geant4 include directories and compile definitions
 # Setup include directory for this project
 #
 include(${Geant4_USE_FILE})
 include_directories(${PROJECT_SOURCE_DIR}/include)
-include_directories(/usr/include/root)
-include_directories(/usr/lib/root)
-include_directories(/newscratch/reudc13/opt/root/include)
+include_directories(${ROOT_INCLUDE_DIR})
+include_directories(${ROOT_LIBRARY_DIR})
+# include_directories(/newscratch/reudc13/opt/root/include)
 
-set(ROOT_LIBRARIES -L/usr/lib/root -L/newscratch/reudc13/opt/root/lib
-	-L/usr/lib64/root -L/home/g4vm/Programs/root/lib -lCore -lCint -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lMatrix -lPhysics -lMathCore -lThread -pthread -lm -ldl -rdynamic)
+set(ROOT_LIBRARIES -L${ROOT_LIBRARY_DIR} -lCore -lCint -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lMatrix -lPhysics -lMathCore -lThread -pthread -lm -ldl -rdynamic)
 SET(GCC_COVERAGE_COMPILE_FLAGS "-w -DPHASESPACE")
 #SET(GCC_COVERAGE_COMPILE_FLAGS "-w")
 SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}" )
