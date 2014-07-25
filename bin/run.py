@@ -20,9 +20,9 @@ import subprocess as sp
 from random import randint
 
 
-##*********************************************
-## P O U R  L E S  S I M U L A T I O N S  S U R  P L U S I E U R S  T H R E A D S
-#*********************************************
+##***********************************************************
+## F O R   M U L T I T H R E A D E D   S I M U L A T I O N S
+##***********************************************************
 
 
 #os.chdir(A['DIR'])
@@ -60,10 +60,10 @@ for t in th:
 
 
 ##*********************************************
-## C H R O N O M E T R E
-#*********************************************
+## T I M E R
+##*********************************************
 
 totalTime = time.time() - startTime
 
-print ' La simulation a dure ' + str(totalTime) + ' secondes '
+print ' The simulation lasted ' + str(totalTime) + ' seconds '
 
