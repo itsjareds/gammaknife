@@ -1,0 +1,33 @@
+diff -rupN -x build -x .git gk/gammaknife/Beam.cc gammaknife/Beam.cc
+--- gk/gammaknife/Beam.cc	2014-07-25 15:43:56.000000000 -0400
++++ gammaknife/Beam.cc	2014-07-25 16:56:31.000000000 -0400
+@@ -2,8 +2,6 @@
+ #include "G4UImanager.hh"
+ #include "G4UIterminal.hh"
+ //#include "G4UItcsh.hh"
+-#include "G4VisManager.hh"
+-#include "G4VisExecutive.hh"
+ #include "G4UIExecutive.hh"
+ // #include "RecorderBase.hh"
+ // #include "ExTPROOTuple.hh"
+@@ -48,8 +46,6 @@ int main(int argc,char** argv)
+ //   runManager->BeamOn(particles );
+ 
+ 
+-    G4VisManager* visManager = new G4VisExecutive;
+-    visManager->Initialize();
+     G4UImanager* UImanager = G4UImanager::GetUIpointer();
+     UImanager->ApplyCommand("/control/execute command.mac");
+ //       cout << "Random seed : " << seed << endl;
+diff -rupN -x build -x .git gk/gammaknife/CMakeLists.txt gammaknife/CMakeLists.txt
+--- gk/gammaknife/CMakeLists.txt	2014-07-25 15:43:56.000000000 -0400
++++ gammaknife/CMakeLists.txt	2014-07-25 16:56:31.000000000 -0400
+@@ -9,7 +9,7 @@ project(RunBeam)
+ # You can set WITH_GEANT4_UIVIS to OFF via the command line or ccmake/cmake-gui
+ # to build a batch mode only executable
+ #
+-option(WITH_GEANT4_UIVIS "Build example with Geant4 UI and Vis drivers" ON)
++option(WITH_GEANT4_UIVIS "Build example with Geant4 UI and Vis drivers" OFF)
+ if(WITH_GEANT4_UIVIS)
+   find_package(Geant4 REQUIRED ui_all vis_all)
+ else()

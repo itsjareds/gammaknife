@@ -18,6 +18,7 @@ bin/*
 !bin/command.mac
 !bin/run.py
 !bin/pspace.pbs
+!bin/remove_uivis.patch
 
 RunBeam
 openPBS.script
