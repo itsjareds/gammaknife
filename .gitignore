@@ -17,6 +17,7 @@ fixedbeam30.py
 bin/*
 !bin/command.mac
 !bin/run.py
+!bin/pspace.pbs
 
 RunBeam
 openPBS.script
