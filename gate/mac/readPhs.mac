@@ -1,0 +1,91 @@
+
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#
+#             R E A D   P H A S E S P A C E   A N D
+#
+#     I R R A D I A T E   V O X E L I Z E D   P H A N T O M
+#
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+
+#=====================================================
+# VISUALISATION
+#=====================================================
+
+#/vis/disable
+
+#/vis/open                           OGLSX
+#/vis/viewer/set/viewpointThetaPhi   60 60
+#/vis/viewer/zoom                    6.0
+#/vis/drawVolume
+#/tracking/storeTrajectory           1
+#/vis/scene/add/trajectories
+#/vis/scene/endOfEventAction         accumulate
+
+#custom
+#/vis/scene/create
+#/vis/open VRML2FILE
+#/tracking/storeTrajectory 1
+#/vis/scene/add/trajectories
+#/vis/scene/endOfEventAction accumulate
+#/custom
+
+/control/execute mac/Verbose.mac
+
+
+#=====================================================
+# COLLIMATOR GRID
+#=====================================================
+
+/control/execute mac/CollimatorGrid.mac
+
+#=====================================================
+# VOXEL PHANTOM FLASK
+#=====================================================
+
+#/control/execute mac/VoxelizedPhantom.mac
+
+#=====================================================
+# PHYSICS
+#=====================================================
+
+/control/execute mac/Physics.mac
+
+#=====================================================
+# CUTS
+#=====================================================
+
+/gate/physics/Gamma/SetCutInRegion       world 0.1 um
+/gate/physics/Electron/SetCutInRegion    world 0.1 um
+/gate/physics/Positron/SetCutInRegion    world 0.1 um
+
+#=====================================================
+# ACTORS
+#=====================================================
+
+## Dose deposition
+
+#=====================================================
+# INITIALIZATION
+#=====================================================
+
+/gate/run/initialize
+
+#=====================================================
+# COLLIMATOR HEMISPHERE ROTATION
+#=====================================================
+
+/control/execute mac/MoveVisu.mac
+
+#=====================================================
+# MEASUREMENT SETTINGS
+#=====================================================
+
+/gate/application/setTimeSlice   1.   s
+/gate/application/setTimeStart   0.   s
+/gate/application/setTimeStop    1.   s
+
+/gate/application/setTotalNumberOfPrimaries 1
+
+/gate/application/startDAQ
