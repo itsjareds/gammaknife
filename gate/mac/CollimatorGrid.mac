@@ -1,0 +1,175 @@
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+
+#
+#     W O R L D
+#
+/gate/world/geometry/setXLength                 500. cm
+/gate/world/geometry/setYLength                 500. cm
+/gate/world/geometry/setZLength                 500. cm
+#/gate/world/geometry/setXLength                 400. mm
+#/gate/world/geometry/setYLength                 400. mm
+#/gate/world/geometry/setZLength                 400. mm
+
+#
+# Collimator hemisphere
+#
+
+/gate/world/daughters/name                      hemisphere
+/gate/world/daughters/insert                    sphere
+/gate/hemisphere/geometry/setRmin               0 mm
+/gate/hemisphere/geometry/setRmax               1000 mm
+/gate/hemisphere/geometry/setPhiStart           0 deg
+/gate/hemisphere/geometry/setDeltaPhi           180 deg
+/gate/hemisphere/placement/setTranslation       0.0 0.0 0.0 mm
+/gate/hemisphere/setMaterial                    Air
+/gate/hemisphere/vis/setVisible                 1
+/gate/hemisphere/vis/setColor                   yellow
+
+# Volume movement over time
+
+#/gate/hemisphere/moves/insert                   rotation
+#/gate/hemisphere/rotation/setSpeed              1.5 deg/s
+#/gate/hemisphere/rotation/setAxis               1 0 0
+
+/gate/hemisphere/moves/insert                   orbiting
+/gate/hemisphere/orbiting/setSpeed              1.5 deg/s
+/gate/hemisphere/orbiting/setPoint1             0 0 0 cm
+/gate/hemisphere/orbiting/setPoint2             1 0 0 cm
+
+#================
+# COLLIMATOR 0
+#================
+
+/gate/hemisphere/daughters/name                 Collimator0
+/gate/hemisphere/daughters/insert               cylinder
+/gate/Collimator0/geometry/setRmin              0 nm
+/gate/Collimator0/geometry/setRmax              10 mm
+/gate/Collimator0/geometry/setHeight            0.5 nm
+/gate/Collimator0/placement/setTranslation      0.0 0.000 -800.000 mm
+/gate/Collimator0/setMaterial                   Air
+/gate/Collimator0/vis/setVisible                1
+/gate/Collimator0/vis/setColor                  red
+
+#================
+# COLLIMATOR 1
+#================
+
+/gate/hemisphere/daughters/name                 Collimator1
+/gate/hemisphere/daughters/insert               cylinder
+/gate/Collimator1/geometry/setRmin              0 nm
+/gate/Collimator1/geometry/setRmax              10 mm
+/gate/Collimator1/geometry/setHeight            0.5 nm
+/gate/Collimator1/placement/setTranslation      0.0 565.685 -565.685 mm
+/gate/Collimator1/setMaterial                   Air
+/gate/Collimator1/vis/setVisible                1
+/gate/Collimator1/vis/setColor                  red
+
+#================
+# COLLIMATOR 2
+#================
+
+/gate/hemisphere/daughters/name                 Collimator2
+/gate/hemisphere/daughters/insert               cylinder
+/gate/Collimator2/geometry/setRmin              0 nm
+/gate/Collimator2/geometry/setRmax              10 mm
+/gate/Collimator2/geometry/setHeight            0.5 nm
+/gate/Collimator2/placement/setTranslation      0.0 800.000 -0.000 mm
+/gate/Collimator2/setMaterial                   Air
+/gate/Collimator2/vis/setVisible                1
+/gate/Collimator2/vis/setColor                  red
+
+#================
+# COLLIMATOR 3
+#================
+
+/gate/hemisphere/daughters/name                 Collimator3
+/gate/hemisphere/daughters/insert               cylinder
+/gate/Collimator3/geometry/setRmin              0 nm
+/gate/Collimator3/geometry/setRmax              10 mm
+/gate/Collimator3/geometry/setHeight            0.5 nm
+/gate/Collimator3/placement/setTranslation      0.0 565.685 565.685 mm
+/gate/Collimator3/setMaterial                   Air
+/gate/Collimator3/vis/setVisible                1
+/gate/Collimator3/vis/setColor                  red
+
+#================
+# COLLIMATOR 4
+#================
+
+/gate/hemisphere/daughters/name                 Collimator4
+/gate/hemisphere/daughters/insert               cylinder
+/gate/Collimator4/geometry/setRmin              0 nm
+/gate/Collimator4/geometry/setRmax              10 mm
+/gate/Collimator4/geometry/setHeight            0.5 nm
+/gate/Collimator4/placement/setTranslation      0.0 0.000 800.000 mm
+/gate/Collimator4/setMaterial                   Air
+/gate/Collimator4/vis/setVisible                1
+/gate/Collimator4/vis/setColor                  red
+
+#
+# Attach phasespace
+#
+
+/gate/source/addSource                          seed0 phaseSpace
+/gate/source/seed0/addPhaseSpaceFile            data/collimator.root
+/gate/source/seed0/setParticleType              gamma
+#/gate/source/seed0/useRegularSymmetry
+/gate/source/seed0/useRandomSymmetry
+/gate/source/seed0/setRmax                      18 mm
+/gate/source/seed0/attachTo                     Collimator0
+
+/gate/source/addSource                          seed1 phaseSpace
+/gate/source/seed1/addPhaseSpaceFile            data/collimator.root
+/gate/source/seed1/setParticleType              gamma
+#/gate/source/seed1/useRegularSymmetry
+/gate/source/seed1/useRandomSymmetry
+/gate/source/seed1/setRmax                      18 mm
+/gate/source/seed1/attachTo                     Collimator1
+
+/gate/source/addSource                          seed2 phaseSpace
+/gate/source/seed2/addPhaseSpaceFile            data/collimator.root
+/gate/source/seed2/setParticleType              gamma
+#/gate/source/seed2/useRegularSymmetry
+/gate/source/seed2/useRandomSymmetry
+/gate/source/seed2/setRmax                      18 mm
+/gate/source/seed2/attachTo                     Collimator2
+
+/gate/source/addSource                          seed3 phaseSpace
+/gate/source/seed3/addPhaseSpaceFile            data/collimator.root
+/gate/source/seed3/setParticleType              gamma
+#/gate/source/seed3/useRegularSymmetry
+/gate/source/seed3/useRandomSymmetry
+/gate/source/seed3/setRmax                      18 mm
+/gate/source/seed3/attachTo                     Collimator3
+
+/gate/source/addSource                          seed4 phaseSpace
+/gate/source/seed4/addPhaseSpaceFile            data/collimator.root
+/gate/source/seed4/setParticleType              gamma
+#/gate/source/seed4/useRegularSymmetry
+/gate/source/seed4/useRandomSymmetry
+/gate/source/seed4/setRmax                      18 mm
+/gate/source/seed4/attachTo                     Collimator4
+
+#
+# Rotate collimated beams
+#
+
+/gate/Collimator0/placement/setRotationAxis     1 0 0
+/gate/Collimator0/placement/setRotationAngle    0.0000 deg
+#/gate/Collimator0/placement/setAxis             1 0 0
+
+/gate/Collimator1/placement/setRotationAxis     1 0 0
+/gate/Collimator1/placement/setRotationAngle    45.0000 deg
+#/gate/Collimator1/placement/setAxis             1 0 0
+
+/gate/Collimator2/placement/setRotationAxis     1 0 0
+/gate/Collimator2/placement/setRotationAngle    90.0000 deg
+#/gate/Collimator2/placement/setAxis             1 0 0
+
+/gate/Collimator3/placement/setRotationAxis     1 0 0
+/gate/Collimator3/placement/setRotationAngle    135.0000 deg
+#/gate/Collimator3/placement/setAxis             1 0 0
+
+/gate/Collimator4/placement/setRotationAxis     1 0 0
+/gate/Collimator4/placement/setRotationAngle    180.0000 deg
+#/gate/Collimator4/placement/setAxis             1 0 0
