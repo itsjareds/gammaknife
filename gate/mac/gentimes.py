@@ -8,8 +8,8 @@
 # t is the total time of rotation (seconds)
 # n is the number of time splits
 
-t = 120.
-n = 24
+t = 240.
+n = 48000
 
 dt = t/n
 x = 0.0
