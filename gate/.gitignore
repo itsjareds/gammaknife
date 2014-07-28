@@ -1,0 +1,7 @@
+output/*
+!output/.keep
+
+data/flask.hdr
+data/flask.img
+data/flask_info.txt
+data/range_atten_brain.dat

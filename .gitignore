@@ -22,9 +22,3 @@ bin/*
 
 RunBeam
 openPBS.script
-gate/output/*
-!gate/output/.keep
-
-gate/data/flask.hdr
-gate/data/flask.img
-gate/data/flask_info.txt
