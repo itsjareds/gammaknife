@@ -1,0 +1,19 @@
+#
+# Voxelized cell flask phantom
+#
+
+
+/gate/world/daughters/name flask
+/gate/world/daughters/insert ImageRegularParametrisedVolume
+/gate/flask/geometry/SetImage data/flask.hdr
+/gate/flask/geometry/setRangeToMaterialFile data/range_atten_brain.dat
+
+/gate/flask/placement/setTranslation  0. 0. 0. mm
+/gate/flask/placement/setRotationAxis 1 0 0
+/gate/flask/placement/setRotationAngle 0 deg
+/gate/flask/attachPhantomSD
+
+#/gate/phantom/setSkipEqualMaterials                      0
+#/gate/phantom/setFictitiousEnergy                       111. keV
+#/gate/phantom/setGammaDiscardEnergy                     0.1 keV
+
