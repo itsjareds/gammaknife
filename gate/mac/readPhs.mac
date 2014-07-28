@@ -15,13 +15,13 @@
 
 #/vis/disable
 
-#/vis/open                           OGLSX
-#/vis/viewer/set/viewpointThetaPhi   60 60
-#/vis/viewer/zoom                    6.0
-#/vis/drawVolume
-#/tracking/storeTrajectory           1
-#/vis/scene/add/trajectories
-#/vis/scene/endOfEventAction         accumulate
+/vis/open                           OGLSX
+/vis/viewer/set/viewpointThetaPhi   90 0
+/vis/viewer/zoom                    3.0
+/vis/drawVolume
+/tracking/storeTrajectory           1
+/vis/scene/add/trajectories
+/vis/scene/endOfEventAction         accumulate
 
 #custom
 #/vis/scene/create
@@ -32,7 +32,6 @@
 #/custom
 
 /control/execute mac/Verbose.mac
-
 
 #=====================================================
 # COLLIMATOR GRID
@@ -56,15 +55,32 @@
 # CUTS
 #=====================================================
 
-/gate/physics/Gamma/SetCutInRegion       world 0.1 um
-/gate/physics/Electron/SetCutInRegion    world 0.1 um
-/gate/physics/Positron/SetCutInRegion    world 0.1 um
+/gate/physics/Gamma/SetCutInRegion       world 100 mm
+/gate/physics/Electron/SetCutInRegion    world 100 mm
+/gate/physics/Positron/SetCutInRegion    world 100 mm
 
 #=====================================================
 # ACTORS
 #=====================================================
 
+/gate/actor/addActor               SimulationStatisticActor stat
+#/gate/actor/stat/saveEveryNSeconds 60
+/gate/actor/stat/save              output/stat.txt
+
 ## Dose deposition
+
+#/gate/actor/addActor                      DoseActor doseDistribution
+#/gate/actor/doseDistribution/save                   output/doses.mhd
+#/gate/actor/doseDistribution/attachTo    	    	 flask
+#/gate/actor/doseDistribution/stepHitType            random
+#/gate/actor/doseDistribution/setPosition            0 0 0 cm
+#/gate/actor/doseDistribution/setVoxelSize           2 2 2 mm
+##/gate/actor/doseDistribution/saveEveryNSeconds     60
+#/gate/actor/doseDistribution/enableEdep             true
+#/gate/actor/doseDistribution/enableUncertaintyEdep  true
+#/gate/actor/doseDistribution/enableDose             true
+#/gate/actor/doseDistribution/enableUncertaintyDose  false
+##/gate/actor/doseDistribution/enableNumberOfHits    false
 
 #=====================================================
 # INITIALIZATION
@@ -82,10 +98,10 @@
 # MEASUREMENT SETTINGS
 #=====================================================
 
-/gate/application/setTimeSlice   1.   s
-/gate/application/setTimeStart   0.   s
-/gate/application/setTimeStop    1.   s
+/gate/application/setTimeSlice   5   s
+/gate/application/setTimeStart   0    s
+/gate/application/setTimeStop    120  s
 
-/gate/application/setTotalNumberOfPrimaries 1
+/gate/application/setTotalNumberOfPrimaries 100
 
 /gate/application/startDAQ
