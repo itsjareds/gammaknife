@@ -38,7 +38,7 @@ int main(int argc,char** argv)
 
   runManager->SetUserInitialization(new PhysicsList());
 
-  runManager->SetUserAction( new PrimaryGeneratorAction(atoi(argv[1])));//(atoi(argv[2]),argv[3]) );
+  runManager->SetUserAction( new PrimaryGeneratorAction(atoi(argv[2])));//(atoi(argv[2]),argv[3]) );
   runManager->SetUserAction( new SteppingAction(0,particles) );
   runManager->SetUserAction( new StackingAction() );
   runManager->SetUserInitialization(new DetectorConstruction());

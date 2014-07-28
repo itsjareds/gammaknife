@@ -62,7 +62,7 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction(){
   G4cout << "nPhotonsGenerated "<<nPhotonsGenerated<<G4endl;
 
 #ifdef PHASESPACE
-  TString filename = Form("PhaseSpace.%d.root",thread);
+  TString filename = Form("PhaseSpace.%8d.root",procId);
   f = new TFile(filename,"recreate");
   t->Write();
   f->Close();
@@ -74,9 +74,9 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction(){
 // G4cout<<__LINE__<<G4endl;
 }
 
-PrimaryGeneratorAction::PrimaryGeneratorAction(G4int _thread) {
+PrimaryGeneratorAction::PrimaryGeneratorAction(G4int _procId) {
   theGenerator = this;
-  thread = _thread;
+  procId =  _procId; // 8 digit random number
   nPhotonsGenerated = 0;
   IrradiatedEnergy = 0.;
 

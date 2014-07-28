@@ -39,14 +39,14 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 
         G4int nPhotonsGenerated; // number of primary photons thrown
         G4double IrradiatedEnergy;
-        G4int thread;
+        G4int procId;
 
         TFile *f;
         TTree *t;
         TChain *ch;
         float x,y,z,theta,phi,E,dx,dy,dz;
         string volume;
-        
+
     private:
         static PrimaryGeneratorAction* theGenerator;
         G4ParticleGun* particleGun;
