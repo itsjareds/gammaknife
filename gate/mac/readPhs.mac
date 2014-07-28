@@ -16,7 +16,7 @@
 #/vis/disable
 
 /vis/open                           OGLSX
-/vis/viewer/set/viewpointThetaPhi   90 0
+/vis/viewer/set/viewpointThetaPhi   90 30
 /vis/viewer/zoom                    3.0
 /vis/drawVolume
 /tracking/storeTrajectory           1
